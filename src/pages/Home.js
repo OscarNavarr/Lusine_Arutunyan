@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import images
-import WomanImg from '../img/home/woman.png';
+import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
 // import link
 import { Link } from 'react-router-dom';
 // import motion
@@ -37,7 +37,7 @@ const Home = () => {
               photographer <br /> & film maker
             </h1>
             <p className='text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12'>
-              Los Angeles, USA
+              Marseille-Paris, France
             </p>
             <Link to={'/contact'} className='btn mb-[30px]'>
               hire me
@@ -50,7 +50,7 @@ const Home = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='relative lg:-right-40 overflow-hidden'
+              className='relative lg:-right-40 overflow-hidden max-w-[50rem] pt-[8rem]'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}

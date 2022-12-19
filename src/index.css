@@ -15,4 +15,7 @@
   .btn {
     @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-primary text-white;
   }
+  .h2{
+    @apply text-[54px] lg:text-[40px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em];
+  }
 }

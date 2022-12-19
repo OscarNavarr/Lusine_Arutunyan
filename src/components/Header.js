@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // import components
 import Socials from './Socials';
-import Logo from '../img/header/logo.svg';
+
 import MobileNav from './MobileNav';
 // import link
 import { Link } from 'react-router-dom';
@@ -19,9 +19,9 @@ const Header = () => {
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
           to={'/'}
-          className='max-w-[200px]'
+          className='max-w-[300px]'
         >
-          <img src={Logo} alt='' />
+          <h2 className='h2'>Lusine Arutunyan</h2>
         </Link>
         {/* nav - initially hidden - show on desktop mode */}
         <nav
@@ -46,6 +46,12 @@ const Header = () => {
             className='text-[#696c6d] hover:text-primary transition'
           >
             Porftolio
+          </Link>
+          <Link
+            to={'/portfolio'}
+            className='text-[#696c6d] hover:text-primary transition'
+          >
+            Pricing
           </Link>
           <Link
             to={'/contact'}

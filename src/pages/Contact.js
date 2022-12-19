@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import images
-import WomanImg from '../img/contact/woman.png';
+import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
 // import motion
 import { motion } from 'framer-motion';
 // import transition
@@ -62,17 +62,7 @@ const Contact = () => {
             </form>
           </div>
           {/* image */}
-          <motion.div
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            initial={{ opacity: 0, y: '100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '100%' }}
-            transition={{ transition: transition1, duration: 1.5 }}
-            className='lg:flex-1'
-          >
-            <img src={WomanImg} alt='' />
-          </motion.div>
+          
         </div>
       </div>
     </motion.section>
