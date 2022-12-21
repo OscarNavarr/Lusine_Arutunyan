@@ -19,21 +19,14 @@ const Contact = () => {
       transition={transition1}
       className='section bg-white'
     >
-      <div className='container mx-auto h-full'>
-        <div className='flex flex-col lg:flex-row h-full items-center justify-start pt-36 gap-x-8 text-center lg:text-left'>
-          {/* bg */}
-          <motion.div
-            initial={{ opacity: 0, y: '100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '100%' }}
-            transition={transition1}
-            className='hidden lg:flex bg-[#eef7f9] absolute bottom-0 left-0 right-0 top-72 -z-10'
-          ></motion.div>
+      <div className='mx-auto h-full'>
+        <div className=' flex flex-col lg:flex-row h-full items-center justify-start pt-[24rem] gap-x-8 text-center lg:text-left'>
+          
           {/* text & form */}
           <div
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
-            className='lg:flex-1 lg:pt-32 px-4'
+            className='lg:flex-1 lg:pt-32 px-[20rem] bg-[#eef7f9]'
           >
             <h1 className='h1'>Contact me</h1>
             <p className='mb-12'>I would love to get suggestions from you.</p>
@@ -60,9 +53,7 @@ const Contact = () => {
                 Send it
               </button>
             </form>
-          </div>
-          {/* image */}
-          
+          </div>          
         </div>
       </div>
     </motion.section>
