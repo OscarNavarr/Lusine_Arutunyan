@@ -39,14 +39,15 @@ const About = () => {
             
           >
             <h1 className='h1'>About me</h1>
-            <p className='mb-12 max-w-sm'>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              <b> Exercitationem, veritatis.</b> Veritatis illum aut,
-              reprehenderit sed dolorem dolore.
-              <br />
-              <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Recusandae, iure! Ullam, dolore? Eligendi, quam mollitia.
+            <p className='mb-3 max-w-sm'>
+              My name is.<b> Lusine Arutunyan.</b> and I'm a photographer. 
+              One of the most important things I can do for yo is to awaken in you a smile and a love for photography.
+            </p>
+            <p className='mb-3'>
+              By contacting me, you'll receive photos with live emotions. Through the prism of my passion for photography, through the lens of my camera,<b>I'm ready to show you as you are.</b>
+            </p>
+            <p className='mb-[3rem]'>
+              You'll have precious moments of your life that you can share with your family and friends.
             </p>
             <Link to={'/portfolio'} className='btn'>
               Read more

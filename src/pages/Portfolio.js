@@ -36,14 +36,11 @@ const Portfolio = () => {
             className='flex flex-col lg:items-start'
           >
             <h1 className='h1'>Portfolio</h1>
+            <p className='mb-3 max-w-sm'>
+            <b>Love story/family, individual, photo for pregnant, photo for brand</b>, my photographs cover all kinds of topics.
+            </p>
             <p className='mb-12 max-w-sm'>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              <b> Exercitationem, veritatis.</b> Veritatis illum aut,
-              reprehenderit sed dolorem dolore.
-              <br />
-              <br />
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Recusandae, iure! Ullam, dolore? Eligendi, quam mollitia.
+            More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
             </p>
             <Link to={'/subportfolio'} className='btn mb-[30px] mx-auto lg:mx-0'>
               Look more
