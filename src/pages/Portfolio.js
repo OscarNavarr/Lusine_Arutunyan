@@ -37,7 +37,7 @@ const Portfolio = () => {
           >
             <h1 className='h1'>Portfolio</h1>
             <p className='mb-3 max-w-sm'>
-            <b>Love story/family, individual, photo for pregnant, photo for brand</b>, my photographs cover all kinds of topics.
+            <b>Love story/family, individual, photo for pregnant, Weddings</b>, my photographs cover all kinds of topics.
             </p>
             <p className='mb-12 max-w-sm'>
             More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
