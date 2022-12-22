@@ -12,18 +12,27 @@
 
 import React, {useState} from 'react';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-
-
+import { CloudinaryContext } from 'cloudinary-react';
+import {Image, Video, Transformation} from 'cloudinary-react';
+import {Cloudinary} from "@cloudinary/url-gen";
 
 const images = [
-    "https://picsum.photos/2100/3100",
-    "https://picsum.photos/2200/3200",
-    "https://picsum.photos/2350/3300",
-    "https://picsum.photos/2420/3400",
-    "https://picsum.photos/2500/3600",
-    "https://picsum.photos/2700/3700",
-    "https://picsum.photos/2800/3800",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img6_qkq6bt.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img5_hb3a3q.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img7_uibnem.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img3_h3auuy.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img1_lma0rj.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703814/photos/img4_uyvmfk.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703806/photos/img2_xbcevn.jpg",
 ]
+const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'duchgijkt'
+    }
+});
+const myImage = cld.image('photos/img3_h3auuy'); 
+
+console.log(myImage);
 
 const Gallery = () =>{
         const [data, setData] = useState({img: '', i: 0 })
@@ -85,6 +94,7 @@ const Gallery = () =>{
             </div>
         }
         <div>
+
             <ResponsiveMasonry
             columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
             >
@@ -106,3 +116,12 @@ const Gallery = () =>{
     )
 }
 export default Gallery
+
+/**
+   <CloudinaryContext cloudName="duchgijkt">
+        <div>
+            <Image publicId="photos/img3_h3auuy" width="50" />
+        </div>
+        <Image publicId="photos/img3_h3auuy" width="0.5" />
+    </CloudinaryContext>
+ */
