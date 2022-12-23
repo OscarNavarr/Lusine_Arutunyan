@@ -10,6 +10,7 @@ import SubPortfolio from '../pages/subPages/SubPortfolio';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Pricing from '../pages/Pricing';
+import SubAbout from '../pages/subPages/SubAbout';
 
 const AnimRoutes = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const AnimRoutes = () => {
       <Routes key={location.pathname} location={location}>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
+        <Route path='/subabout' element={<SubAbout />} />
         <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/subportfolio' element={<SubPortfolio />} />
         <Route path='/pricing' element={<Pricing/>} />

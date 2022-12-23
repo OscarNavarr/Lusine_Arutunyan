@@ -12,29 +12,9 @@
 
 import React, {useState} from 'react';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import { CloudinaryContext } from 'cloudinary-react';
-import {Image, Video, Transformation} from 'cloudinary-react';
-import {Cloudinary} from "@cloudinary/url-gen";
 
-const images = [
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img6_qkq6bt.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img5_hb3a3q.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img7_uibnem.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img3_h3auuy.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img1_lma0rj.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703814/photos/img4_uyvmfk.jpg",
-    "https://res.cloudinary.com/duchgijkt/image/upload/v1671703806/photos/img2_xbcevn.jpg",
-]
-const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'duchgijkt'
-    }
-});
-const myImage = cld.image('photos/img3_h3auuy'); 
 
-console.log(myImage);
-
-const Gallery = () =>{
+const Gallery = ( props = '') =>{
         const [data, setData] = useState({img: '', i: 0 })
         
         const viewImage = (img, i) => {
@@ -44,10 +24,10 @@ const Gallery = () =>{
         const imgAction = (action) =>{
             let i = data.i;
             if(action === 'next-img'){
-                setData({img: images[i + 1], i: i + 1})
+                setData({img: props.images[i + 1], i: i + 1})
             }
             if(action === 'previous-img'){
-                setData({img: images[i - 1], i: i - 1})
+                setData({img: props.images[i - 1], i: i - 1})
             }
             if(action === 'quite'){
                 setData({img: '', i: 0});
@@ -99,12 +79,13 @@ const Gallery = () =>{
             columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
             >
                 <Masonry gutter='20px'>
-                    {images.map((image, i) => (
+                    {props.images.map((image, i) => (
                         <img
                             key={i}
                             src={image}
                             style={{width: "100%", display: "block", cursor:'pointer'}}
                             alt="Gallery images"
+                            className='hover:scale-105 transition-all duration-500'
                             onClick={() => viewImage(image, i)}
                         />
                     ))}
@@ -116,12 +97,3 @@ const Gallery = () =>{
     )
 }
 export default Gallery
-
-/**
-   <CloudinaryContext cloudName="duchgijkt">
-        <div>
-            <Image publicId="photos/img3_h3auuy" width="50" />
-        </div>
-        <Image publicId="photos/img3_h3auuy" width="0.5" />
-    </CloudinaryContext>
- */

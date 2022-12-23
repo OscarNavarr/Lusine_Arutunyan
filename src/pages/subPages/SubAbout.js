@@ -1,0 +1,75 @@
+import React, { useContext } from 'react';
+
+// import link
+import { Link } from 'react-router-dom';
+// import motion
+import { motion } from 'framer-motion';
+// import transition
+import { transition1 } from '../../transitions';
+// import cursor context
+import { CursorContext } from '../../context/CursorContext';
+import Gallery from './Gallery';
+
+const images = [
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671812840/photos/certifications/19966_ptsusq.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671812630/photos/certifications/5684446_pwjxne.jpg",
+    "https://res.cloudinary.com/duchgijkt/image/upload/v1671812630/photos/certifications/5498012_twkc0g.jpg",
+  ]
+const SubAbout = () => {
+const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  return (
+    <motion.section
+        initial={{ opacity: 0, y: '100%' }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: '100%' }}
+        transition={transition1}
+    >
+        <div className='container mx-auto h-full relative'>
+            <div className='flex justify-center items-center pt-[10rem]'>
+                <img src='https://res.cloudinary.com/duchgijkt/image/upload/c_lfill,g_face,h_858,q_99,w_1365,x_3,y_235/v1671808846/photos/Lusine_Arutunyan_bpvkkp.jpg'
+                    alt='img_Lusine'
+                    className='h-[35rem] hover:scale-110 transition-all duration-500'
+                />
+            </div>
+            <motion.div
+                onMouseEnter={mouseEnterHandler}
+                onMouseLeave={mouseLeaveHandler}
+                initial={{ opacity: 0, y: '-80%' }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: '-80%' }}
+                transition={transition1}
+                className='mt-[5rem]'
+            >
+                <h2 className='text-center text-[54px] lg:text-[40px] font-primary font-semibold capitalize leading-[120%] tracking-[0.05em]'>Meet your photographer</h2>
+                <div className='flex justify-center '>
+                    <div className='w-[57rem] py-[5rem]'>
+                        <p className='text-xl'>Exercitation est irure cillum in eiusmod nostrud tempor labore Lorem. Ea ea duis incididunt esse. Fugiat exercitation voluptate enim tempor et mollit sit laboris. Consectetur nisi amet sint voluptate.</p>
+
+                        <p className='mt-3 text-xl'>In consequat exercitation ex eiusmod ea veniam aliquip laboris commodo dolore elit commodo id ad. Enim cillum et voluptate ullamco fugiat consequat tempor. Ex dolor deserunt ut nostrud. Proident duis eu aliqua minim. Irure consequat adipisicing proident consequat dolore. Dolore tempor anim est aliquip veniam pariatur ut.</p>
+                        
+                        <p className='mt-3 text-xl'>In consequat exercitation ex eiusmod ea veniam aliquip laboris commodo dolore elit commodo id ad. Enim cillum et voluptate ullamco fugiat consequat tempor. Ex dolor deserunt ut nostrud. Proident duis eu aliqua minim. Irure consequat adipisicing proident consequat dolore. Dolore tempor anim est aliquip veniam pariatur ut.</p>
+                    </div>
+                </div>
+            </motion.div>
+            <motion.div
+                onMouseEnter={mouseEnterHandler}
+                onMouseLeave={mouseLeaveHandler}
+                initial={{ opacity: 0, y: '-80%' }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: '-80%' }}
+                transition={transition1}
+                className='mb-[3rem]'
+            >
+                <h2 className='text-center text-[54px] lg:text-[40px] font-primary font-semibold capitalize leading-[120%] tracking-[0.05em] '>MY CERTIFICATIONS.</h2>
+
+            </motion.div>
+        
+            <div className='px-[7rem] pt-10 pb-8'>
+                <Gallery images={images}/>
+            </div>
+        </div>
+    </motion.section>
+  )
+}
+
+export default SubAbout

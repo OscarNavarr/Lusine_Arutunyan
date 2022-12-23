@@ -10,6 +10,15 @@ import { CursorContext } from '../../context/CursorContext';
 import { CloudinaryContext } from 'cloudinary-react';
 import {Image, Video, Transformation} from 'cloudinary-react';
 
+const images = [
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img6_qkq6bt.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img5_hb3a3q.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img7_uibnem.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img3_h3auuy.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671703824/photos/img1_lma0rj.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671703814/photos/img4_uyvmfk.jpg",
+  "https://res.cloudinary.com/duchgijkt/image/upload/v1671703806/photos/img2_xbcevn.jpg",
+]
 const SubPortfolio = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
@@ -42,7 +51,7 @@ const SubPortfolio = () => {
             *
           */}
           <div className=' mt-[4rem]'>
-            <Gallery className='overflow-hidden'/> 
+            <Gallery images={images} className='overflow-hidden'/> 
           </div>
         </div>
       </div>

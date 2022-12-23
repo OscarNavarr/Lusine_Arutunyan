@@ -49,7 +49,7 @@ const About = () => {
             <p className='mb-[3rem]'>
               You'll have precious moments of your life that you can share with your family and friends.
             </p>
-            <Link to={'/portfolio'} className='btn'>
+            <Link to={'/subabout'} className='btn'>
               Read more
             </Link>
           </motion.div>
