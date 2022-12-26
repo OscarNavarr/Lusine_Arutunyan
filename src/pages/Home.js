@@ -1,3 +1,8 @@
+/**
+ * 
+ * FALTA ADAPTAR LA VISTA A PANTALLAS XL
+ * 
+ */
 import React, { useContext } from 'react';
 // import images
 import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
@@ -20,9 +25,9 @@ const Home = () => {
       transition={transition1}
       className='section overflow-hidden'
     >
-      <div className='container mx-auto h-full relative'>
+      <div className='container mx-auto h-full '>
         {/* text & img wrapper */}
-        <div className='flex flex-col justify-center'>
+        <div className='flex flex-col justify-center lg:relative'>
           {/* text */}
           <motion.div
             initial={{ opacity: 0, y: '-50%' }}
@@ -31,26 +36,26 @@ const Home = () => {
             transition={transition1}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
-            className='w-full pt-36 pb-14 lg:pt-0 lg:pb-0 lg:w-auto z-10 lg:absolute flex flex-col justify-center items-center lg:items-start'
+            className='order-2 lg:order-1 w-full lg:pt-[17rem] pb-14 lg:pb-0 lg:w-auto z-10 flex flex-col justify-center items-center lg:items-start'
           >
-            <h1 className='h1'>
+            <h1 className='h1 lg:text-[5rem] lg:pl-[6rem]'>
               photographer <br /> & film maker
             </h1>
-            <p className='text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12'>
+            <p className='text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12 lg:pl-[6rem]'>
               Marseille-Paris, France
             </p>
-            <Link to={'/contact'} className='btn mb-[30px]'>
+            <Link to={'/contact'} className='btn mb-[5px] lg:ml-[6rem]'>
               hire me
             </Link>
           </motion.div>
           {/* image */}
-          <div className='flex justify-end max-h-96 lg:max-h-max'>
+          <div className='lg:absolute lg:right-12 lg:top-[12rem] flex justify-center lg:justify-end lg:max-h-max order-1 lg:order-2 pt-36 lg:pt-0'>
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='relative lg:-right-40 overflow-hidden max-w-[50rem] pt-[8rem]'
+              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] lg:h-full rounded-full lg:rounded-none'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}

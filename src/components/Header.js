@@ -21,7 +21,7 @@ const Header = () => {
           to={'/'}
           className='max-w-[300px]'
         >
-          <h2 className='h2'>Lusine Arutunyan</h2>
+          <h2 className='text-[25px] lg:text-[40px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em]'>Lusine Arutunyan</h2>
         </Link>
         {/* nav - initially hidden - show on desktop mode */}
         <nav
