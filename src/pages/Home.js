@@ -36,7 +36,7 @@ const Home = () => {
             transition={transition1}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
-            className='order-2 lg:order-1 w-full lg:pt-[17rem] pb-14 lg:pb-0 lg:w-auto z-10 flex flex-col justify-center items-center lg:items-start'
+            className='order-2 lg:order-1 w-full lg:pt-[17rem] pb-14 lg:pb-0 lg:w-[40rem] z-10 flex flex-col justify-center items-center lg:items-start '
           >
             <h1 className='h1 lg:text-[5rem] lg:pl-[6rem]'>
               photographer <br /> & film maker
@@ -49,7 +49,7 @@ const Home = () => {
             </Link>
           </motion.div>
           {/* image */}
-          <div className='lg:absolute lg:right-12 lg:top-[12rem] flex justify-center lg:justify-end lg:max-h-max order-1 lg:order-2 pt-36 lg:pt-0'>
+          <div className='lg:relative lg:left-[31rem] lg:bottom-[31rem] flex justify-center lg:justify-end lg:max-h-max order-1 lg:order-2 pt-36 lg:pt-0 lg:w-[30rem]'>
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -62,6 +62,7 @@ const Home = () => {
                 transition={transition1}
                 src={WomanImg}
                 alt=''
+                className=''
               />
             </motion.div>
           </div>
