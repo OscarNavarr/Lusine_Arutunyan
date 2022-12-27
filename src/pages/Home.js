@@ -61,8 +61,6 @@ const Home = () => {
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
                 src={WomanImg}
-                alt=''
-                className=''
               />
             </motion.div>
           </div>
