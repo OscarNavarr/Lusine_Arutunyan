@@ -1,6 +1,6 @@
 /**
  * 
- * FALTA ADAPTAR LA VISTA A PANTALLAS XL
+ * FALTA ADAPTAR LA VISTA A PANTALLAS special
  * 
  */
 import React, { useContext } from 'react';
@@ -36,26 +36,48 @@ const Home = () => {
             transition={transition1}
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
-            className='order-2 lg:order-1 w-full lg:pt-[17rem] pb-14 lg:pb-0 lg:w-[40rem] z-10 flex flex-col justify-center items-center lg:items-start '
+            className='
+              order-2 
+              lg:order-1 
+              w-full 
+              lg:mt-[15rem] xl:mt-[20rem] sxl:mt-[23rem] speciallaptop2:mt-[15rem]
+              xl:ml-[15rem] speciallaptop:ml-[6rem] speciallaptop2:ml-[15rem] special:ml-[15rem] sxl:ml-[34.9rem] 
+              pb-14 lg:pb-0 lg:w-[40rem] xl:w-[35rem]
+              speciallaptop:w-[30rem] special:w-[30rem] sxl:w-[47rem] 
+              z-10 
+              flex flex-col 
+              justify-center
+              items-center lg:items-start'
           >
-            <h1 className='h1 lg:text-[5rem] lg:pl-[6rem]'>
+            <h1 className='h1 lg:text-[5rem] sxl:text-[8rem] '>
               photographer <br /> & film maker
             </h1>
-            <p className='text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12 lg:pl-[6rem]'>
+            <p className='text-[26px] lg:text-[36px] sxl:text-[50px] font-primary mb-4 lg:mb-12 '>
               Marseille-Paris, France
             </p>
-            <Link to={'/contact'} className='btn mb-[5px] lg:ml-[6rem]'>
-              hire me
+            <Link to={'/about'} className='btn mb-[5px] '>
+             Continue
             </Link>
           </motion.div>
           {/* image */}
-          <div className='lg:relative lg:left-[31rem] lg:bottom-[31rem] flex justify-center lg:justify-end lg:max-h-max order-1 lg:order-2 pt-36 lg:pt-0 lg:w-[30rem]'>
+          <div className='
+            lg:relative 
+            lg:left-[31rem] xl:left-[40rem] special:left-[30rem] sxl:left-[75rem] 
+            lg:bottom-[29rem] xl:bottom-[35rem] speciallaptop2:bottom-[29rem] sxl:bottom-[43rem]  
+            flex 
+            justify-center lg:justify-end 
+            lg:max-h-max 
+            order-1 lg:order-2 
+            pt-36 lg:pt-0 
+            lg:w-[30rem] special:w-[50rem] sxl:w-[55rem] 
+            sxl:bg-black' 
+          >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] lg:h-full rounded-full lg:rounded-none'
+              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] special:w-[40rem] sxl:w-[55rem] lg:h-full rounded-full lg:rounded-none'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}

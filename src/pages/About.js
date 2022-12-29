@@ -39,7 +39,6 @@ const About = () => {
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}
             className='flex-1 pt-36 pb-14 px-8 lg:pt-0 lg:w-auto z-10 flex flex-col justify-center items-center lg:items-start'
-            
           >
             <h1 className='h1 lg:text-[5rem]'>About me</h1>
             <p className='text-justify mb-3 max-w-sm'>

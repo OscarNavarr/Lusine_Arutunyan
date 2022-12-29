@@ -19,9 +19,9 @@ const Header = () => {
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
           to={'/'}
-          className='max-w-[300px]'
+          className='max-w-[300px] sxl:max-w-[500px]'
         >
-          <h2 className='text-[25px] lg:text-[40px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em]'>Lusine Arutunyan</h2>
+          <h2 className='text-[25px] lg:text-[40px] sxl:text-[60px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em]'>Lusine Arutunyan</h2>
         </Link>
         {/* nav - initially hidden - show on desktop mode */}
         <nav
@@ -31,31 +31,31 @@ const Header = () => {
         >
           <Link
             to={'/'}
-            className='text-[#696c6d] hover:text-primary transition'
+            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
           >
             Home
           </Link>
           <Link
             to={'/about'}
-            className='text-[#696c6d] hover:text-primary transition'
+            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
           >
             About
           </Link>
           <Link
             to={'/portfolio'}
-            className='text-[#696c6d] hover:text-primary transition'
+            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
           >
             Porftolio
           </Link>
           <Link
             to={'/pricing'}
-            className='text-[#696c6d] hover:text-primary transition'
+            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
           >
             Pricing
           </Link>
           <Link
             to={'/contact'}
-            className='text-[#696c6d] hover:text-primary transition'
+            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
           >
             Contact
           </Link>
