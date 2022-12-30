@@ -70,7 +70,7 @@ const Home = () => {
             order-1 lg:order-2 
             pt-36 lg:pt-0 
             lg:w-[30rem] special:w-[50rem] sxl:w-[55rem] 
-            sxl:bg-black' 
+            lg:bg-black' 
           >
             <motion.div
               initial={{ scale: 0 }}
