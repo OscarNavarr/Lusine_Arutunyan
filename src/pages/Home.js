@@ -1,8 +1,3 @@
-/**
- * 
- * FALTA ADAPTAR LA VISTA A PANTALLAS special
- * 
- */
 import React, { useContext } from 'react';
 // import images
 import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
@@ -62,14 +57,15 @@ const Home = () => {
           {/* image */}
           <div className='
             lg:relative 
-            lg:left-[31rem] xl:left-[40rem] special:left-[30rem] sxl:left-[75rem] 
+
+            lg:left-[31rem] xl:left-[40rem] special:left-[40rem] sxl:left-[75rem] 
             lg:bottom-[29rem] xl:bottom-[35rem] speciallaptop2:bottom-[29rem] sxl:bottom-[43rem]  
             flex 
             justify-center lg:justify-end 
             lg:max-h-max 
             order-1 lg:order-2 
             pt-36 lg:pt-0 
-            lg:w-[30rem] special:w-[50rem] sxl:w-[55rem] 
+            lg:w-[30rem] special:w-[40rem] sxl:w-[55rem] 
             lg:bg-black' 
           >
             <motion.div

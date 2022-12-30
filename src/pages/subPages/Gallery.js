@@ -41,14 +41,17 @@ const Gallery = ( props = '') =>{
             <div style={{
                 width: '100%',
                 height: '100vh',
-                background: 'black',
+                background: 'rgba(0, 0, 0, 0.6)',
                 position: 'fixed',
                 left:'0rem',
+                top:'0rem',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 overflow:'hidden !important',
-            }}>
+            }}
+            className='z-[200]'
+            >
                 <button onClick={() => imgAction('quite')}
                         style={{position:'absolute', 
                                 top: '2rem', 
