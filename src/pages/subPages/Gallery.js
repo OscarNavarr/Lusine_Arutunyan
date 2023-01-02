@@ -14,11 +14,13 @@ import React, {useState} from 'react';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 
 
-const Gallery = ( props = '') =>{
+const Gallery = ( props) =>{
         const [data, setData] = useState({img: '', i: 0 })
-        
+       
         const viewImage = (img, i) => {
-            setData({img, i})
+            setData({img, i});
+            props.modalOpen(true);
+           
         }
 
         const imgAction = (action) =>{
@@ -31,7 +33,7 @@ const Gallery = ( props = '') =>{
             }
             if(action === 'quite'){
                 setData({img: '', i: 0});
-                console.log('estoy haciendo click');
+                props.modalOpen(false);
             }
 
         }
@@ -43,36 +45,30 @@ const Gallery = ( props = '') =>{
                 height: '100vh',
                 background: 'rgba(0, 0, 0, 0.6)',
                 position: 'fixed',
+                right:'0rem',
                 left:'0rem',
-                top:'0rem',
+                zIndex: '200',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                overflow:'hidden !important',
             }}
-            className='z-[200]'
             >
                 <button onClick={() => imgAction('quite')}
                         style={{position:'absolute', 
                                 top: '2rem', 
-                                right: '3rem',
+                                right: '1.5rem',
                                 color:'white',
-                                fontSize:'2rem'
+                                fontSize:'2rem',
+                                zIndex: 201
                 }}>X</button>
                 <button onClick={() => imgAction('previous-img')}
-                        style={{color:'white',
-                                fontSize:'3.5rem',
-                                marginRight:'2rem',
-                    }}
+                       className='bg-white rounded-full h-[3rem] w-[3rem]  text-[2rem] z-[201] absolute bottom-[15%] left-[30%]'
                 >{'<'}</button>
                 
                 <img src={data.img} style={{width: 'auto', maxWidth: '90%', maxHeight: '90%'}} alt="modal images"/>
                 
                 <button onClick={() => imgAction('next-img')}
-                        style={{color:'white',
-                                fontSize:'3.5rem',
-                                marginLeft:'2rem',
-                    }}
+                        className='bg-white rounded-full h-[3rem] w-[3rem]  text-[2rem] z-[201] absolute bottom-[15%] right-[30%]'
                 >{'>'}</button>
             </div>
         }

@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
+/**
+ * 
+ * cuando reciba un valor true en el useState impedir que la pagina haga scroll
+ * 
+ */
+import React, { useContext, useState } from 'react';
 
-// import link
-import { Link } from 'react-router-dom';
 // import motion
 import { motion } from 'framer-motion';
 // import transition
@@ -17,6 +20,8 @@ const images = [
   ]
 const SubAbout = () => {
 const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+const [ value, setValue ] = useState(false);
+
   return (
     <motion.section
         initial={{ opacity: 0, y: '100%' }}
@@ -64,8 +69,9 @@ const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
             >
                 <h3 className='text-center text-[34px] lg:text-[40px] px-[2rem] font-primary font-semibold capitalize leading-[120%] tracking-[0.05em] '>MY CERTIFICATIONS.</h3>
              </motion.div>
-             <div className='px-[2rem] pt-10 pb-8'>
-                <Gallery images={images}/>
+             <div className='px-[2rem] pt-10 pb-8 overflow-hidden'>
+                <Gallery images={images} modalOpen={ value => setValue(value)}/>
+                {console.log(value)}
             </div>
         </div>
     </motion.section>

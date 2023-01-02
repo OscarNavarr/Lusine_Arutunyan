@@ -27,7 +27,7 @@ const MobileNav = () => {
       {/* nav open button */}
       <div
         onClick={() => setOpenMenu(true)}
-        className='text-3xl cursor-pointer'
+        className='text-3xl  cursor-pointer'
       >
         <CgMenuRight />
       </div>
