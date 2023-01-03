@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header />
+        <Header className='z-[30]' />
         <AnimRoutes />
       </Router>
       {/* cursor */}

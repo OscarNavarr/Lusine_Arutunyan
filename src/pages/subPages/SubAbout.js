@@ -21,14 +21,14 @@ const images = [
 const SubAbout = () => {
 const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 const [ value, setValue ] = useState(false);
-
+console.log('Hola este es el valor:' + value);
   return (
     <motion.section
         initial={{ opacity: 0, y: '100%' }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: '100%' }}
         transition={transition1}
-        className='section'
+        className={`section ${ value && 'overflow-hidden'}`} 
     >
         <div className='container mx-auto h-full'>
             
@@ -71,7 +71,7 @@ const [ value, setValue ] = useState(false);
              </motion.div>
              <div className='px-[2rem] pt-10 pb-8 overflow-hidden'>
                 <Gallery images={images} modalOpen={ value => setValue(value)}/>
-                {console.log(value)}
+                
             </div>
         </div>
     </motion.section>

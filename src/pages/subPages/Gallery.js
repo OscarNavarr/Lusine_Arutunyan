@@ -45,12 +45,14 @@ const Gallery = ( props) =>{
                 height: '100vh',
                 background: 'rgba(0, 0, 0, 0.6)',
                 position: 'fixed',
+                top:'5rem',
                 right:'0rem',
                 left:'0rem',
                 zIndex: '200',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                overflow:'hidden',
             }}
             >
                 <button onClick={() => imgAction('quite')}
