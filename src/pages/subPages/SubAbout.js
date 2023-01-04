@@ -12,6 +12,7 @@ import { transition1 } from '../../transitions';
 // import cursor context
 import { CursorContext } from '../../context/CursorContext';
 import Gallery from './Gallery';
+import SubAboutImgSlider from '../../components/subAbout/SubAboutImgSlider';
 
 const images = [
     "https://res.cloudinary.com/duchgijkt/image/upload/v1671812840/photos/certifications/19966_ptsusq.jpg",
@@ -70,8 +71,8 @@ console.log('Hola este es el valor:' + value);
                 <h3 className='text-center text-[34px] lg:text-[40px] px-[2rem] font-primary font-semibold capitalize leading-[120%] tracking-[0.05em] '>MY CERTIFICATIONS.</h3>
              </motion.div>
              <div className='px-[2rem] pt-10 pb-8 overflow-hidden'>
-                <Gallery images={images} modalOpen={ value => setValue(value)}/>
-                
+                {/*<Gallery images={images} modalOpen={ value => setValue(value)}/>*/}
+                <SubAboutImgSlider images={images}/>
             </div>
         </div>
     </motion.section>
