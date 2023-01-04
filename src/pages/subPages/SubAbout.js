@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../../transitions';
 // import cursor context
 import { CursorContext } from '../../context/CursorContext';
-import Gallery from './Gallery';
+//import Gallery from './Gallery';
 import SubAboutImgSlider from '../../components/subAbout/SubAboutImgSlider';
 
 const images = [
@@ -21,15 +21,15 @@ const images = [
   ]
 const SubAbout = () => {
 const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
-const [ value, setValue ] = useState(false);
-console.log('Hola este es el valor:' + value);
+//const [ value, setValue ] = useState(false);
+//console.log('Hola este es el valor:' + value);
   return (
     <motion.section
         initial={{ opacity: 0, y: '100%' }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: '100%' }}
         transition={transition1}
-        className={`section ${ value && 'overflow-hidden'}`} 
+        className={`section ${/* value && 'overflow-hidden' */ '' }`} 
     >
         <div className='container mx-auto h-full'>
             
@@ -70,7 +70,7 @@ console.log('Hola este es el valor:' + value);
             >
                 <h3 className='text-center text-[34px] lg:text-[40px] px-[2rem] font-primary font-semibold capitalize leading-[120%] tracking-[0.05em] '>MY CERTIFICATIONS.</h3>
              </motion.div>
-             <div className='px-[2rem] pt-10 pb-8 overflow-hidden'>
+             <div className='px-[2rem] pt-10 pb-8'>
                 {/*<Gallery images={images} modalOpen={ value => setValue(value)}/>*/}
                 <SubAboutImgSlider images={images}/>
             </div>

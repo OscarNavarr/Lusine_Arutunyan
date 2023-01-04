@@ -6,12 +6,51 @@ import "slick-carousel/slick/slick-theme.css";
 const SubAboutImgSlider = (props) => {
     const settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         autoplay: true,
         speed: 2000,
         autoplaySpeed: 2000,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                autoplay: true,
+                speed: 2000,
+                autoplaySpeed: 2000,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                autoplay: true,
+                dots: true,
+                speed: 2000,
+                autoplaySpeed: 2000,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+                autoplay: true,
+                dots: true,
+                speed: 2000,
+                autoplaySpeed: 2000,
+              }
+            }
+        ]
     }
   return (
     <div>
@@ -22,9 +61,8 @@ const SubAboutImgSlider = (props) => {
                     <img
                         key={i}
                         src={image}
-                        style={{width: "95%", cursor:'pointer'}}
                         alt="Gallery images"
-                        className='hover:scale-105 transition-all duration-500'
+                        className='hover:scale-105 transition-all duration-500 w-[95%]'
                     />
                 </div>
             ))}         
