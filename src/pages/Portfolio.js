@@ -21,10 +21,10 @@ const Portfolio = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className='section overflow-auto'
+      className='section'
     >
       <div className='container mx-auto h-full relative'>
-        <div className='flex flex-col lg:flex-row h-full items-center justify-start gap-x-24 text-center lg:text-left pt-24 lg:pt-36 pb-8'>
+        <div className='flex flex-col lg:flex-row h-full items-center justify-start gap-x-24 text-center lg:text-left pt-24 lg:pt-36 lg:pb-8 lg:px-[10%]'>
           {/* text */}
           <motion.div
             onMouseEnter={mouseEnterHandler}
@@ -47,7 +47,7 @@ const Portfolio = () => {
             </Link>
           </motion.div>
           {/* image grid */}
-          <div className='grid grid-cols-2 lg:gap-2'>
+          <div className='grid grid-cols-2 lg:gap-px bg-black '>
             {/* image */}
             <div className='max-w-[250px] lg:max-w-[320px] h-[187px] lg:h-[220px] bg-accent overflow-hidden'>
               <img
