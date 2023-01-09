@@ -17,7 +17,7 @@ const ImgSlider = (props) => {
               breakpoint: 1024,
               settings: {
                 slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToScroll: 1,
                 infinite: true,
                 autoplay: true,
                 speed: 2000,
@@ -29,7 +29,7 @@ const ImgSlider = (props) => {
               breakpoint: 640,
               settings: {
                 slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToScroll: 1,
                 infinite: true,
                 autoplay: true,
                 dots: true,
@@ -57,7 +57,7 @@ const ImgSlider = (props) => {
         <Slider {...settings}>
           
             {props.images.map((image, i) => (
-                <div className='h-[20rem]'>
+                <div  className='h-[15rem]'>
                     <img
                         key={i}
                         src={image}

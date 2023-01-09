@@ -19,8 +19,8 @@ const Portfolio = () => {
       transition={transition1}
       className='section overflow-hidden'
     >
-      <div className='container mx-auto h-full pt-[25%]'>
-        <div className='flex flex-col justify-between'>
+      <div className='container mx-auto h-full pt-[25%] md:pt-[20%]'>
+        <div className='flex flex-col lg:flex-row lg:justify-around'>
           {/* text */}
           <motion.div
             onMouseEnter={mouseEnterHandler}
@@ -29,22 +29,31 @@ const Portfolio = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-80%' }}
             transition={transition1}
-            className='flex flex-col lg:items-start'
+            className='flex lg:items-center mx-auto lg:ml-[6rem]'
           >
-            <h1 className='h1'>Portfolio</h1>
-            <p className='mb-3 max-w-sm'>
-            <b>Love story/family, individual, photo for pregnant, Weddings</b>, my photographs cover all kinds of topics.
-            </p>
-            <p className='mb-12 max-w-sm'>
-            More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
-            </p>
-            <Link to={'/subportfolio'} className='btn mb-[30px] mx-auto lg:mx-0'>
-              Look more
-            </Link>
+            <div>
+              <h1 className='h1 text-center lg:text-start lg:text-[40px] sxl:text-[60px]'>Portfolio</h1>
+              <p className='pt-[5%] pb-[2%] max-w-sm md:mx-w-lg text-lg text-justify px-[4%] md:px-[0%]'>
+              <b>Love story/family, individual, photo for pregnant, Weddings</b>, my photographs cover all kinds of topics.
+              </p>
+              <p className='pb-[10%] max-w-sm md:mx-w-lg text-lg text-justify px-[4%] md:px-[0%]'>
+              More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
+              </p>
+              <div className='flex justify-center lg:block'>
+                <Link to={'/subportfolio'} className='btn mb-[30px] px-auto lg:px-0 w-[13rem]'>
+                  Look more
+                </Link>
+              </div>
+              
+            </div>
           </motion.div>
 
           {/* image grid */}
-          <Images/>
+          <div className='mb-3'>
+            
+            <Images/>
+
+          </div>
         </div>
       </div>
     </motion.section>
