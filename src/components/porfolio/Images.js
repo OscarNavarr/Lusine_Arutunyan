@@ -15,14 +15,14 @@ const Images = () => {
         </div>
 
 
-        <div className='hidden lg:grid grid-cols-2 lg:gap-2 lg:w-[23rem] lg:mr-[6rem]'>
+        <div className='hidden lg:grid grid-cols-2 lg:gap-2 lg:w-[23rem] special:w-[35rem] lg:mr-[6rem]'>
             {/* image */}
             {images.map((img,i) => (
                 <div className='max-w-[250px] lg:max-w-[320px] h-[187px] lg:h-[220px] bg-accent overflow-hidden'>
                     <img
                     key={i}
-                    className='object-cover  hover:scale-110 transition-all duration-500'
                     src={img}
+                    className='object-cover  hover:scale-110 transition-all duration-500'
                     alt='Porfolio'
                     />
                 </div>

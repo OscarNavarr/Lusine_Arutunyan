@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // import context
 import { CursorContext } from '../context/CursorContext';
+//import ImagesSlider
 import Images from '../components/porfolio/Images';
 
 const Portfolio = () => {
@@ -17,10 +18,10 @@ const Portfolio = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className='section overflow-hidden'
+      className='section overflow-hidden Overflow-y-visible sm_special:overflow-y-visible '
     >
-      <div className='container mx-auto h-full pt-[25%] md:pt-[20%]'>
-        <div className='flex flex-col lg:flex-row lg:justify-around'>
+      <div className='container mx-auto h-full pt-[8rem] md:pt-[15rem]'>
+        <div className='flex flex-col lg:flex-row lg:items-center lg:justify-around xl:max-w-[100rem] xl:m-auto'>
           {/* text */}
           <motion.div
             onMouseEnter={mouseEnterHandler}
@@ -32,11 +33,11 @@ const Portfolio = () => {
             className='flex lg:items-center mx-auto lg:ml-[6rem]'
           >
             <div>
-              <h1 className='h1 text-center lg:text-start lg:text-[40px] sxl:text-[60px]'>Portfolio</h1>
-              <p className='pt-[5%] pb-[2%] max-w-sm md:mx-w-lg text-lg text-justify px-[4%] md:px-[0%]'>
+              <h1 className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>Portfolio</h1>
+              <p className='pt-[5%] pb-[2%] max-w-sm md:mx-w-lg  xl:max-w-[32rem] text-lg special:text-[1.4rem] text-justify px-[8%] md:px-[0%]'>
               <b>Love story/family, individual, photo for pregnant, Weddings</b>, my photographs cover all kinds of topics.
               </p>
-              <p className='pb-[10%] max-w-sm md:mx-w-lg text-lg text-justify px-[4%] md:px-[0%]'>
+              <p className='pb-[10%] max-w-sm md:mx-w-lg  xl:max-w-[32rem] text-lg special:text-[1.4rem] text-justify px-[8%] md:px-[0%]'>
               More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
               </p>
               <div className='flex justify-center lg:block'>
@@ -49,7 +50,7 @@ const Portfolio = () => {
           </motion.div>
 
           {/* image grid */}
-          <div className='mb-3'>
+          <div >
             
             <Images/>
 
