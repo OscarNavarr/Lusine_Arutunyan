@@ -11,6 +11,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Pricing from '../pages/Pricing';
 import SubAbout from '../pages/subPages/SubAbout';
+import Login from '../pages/AuthPages/Login';
 
 const AnimRoutes = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const AnimRoutes = () => {
         <Route path='/subportfolio' element={<SubPortfolio />} />
         <Route path='/pricing' element={<Pricing/>} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </AnimatePresence>
   );

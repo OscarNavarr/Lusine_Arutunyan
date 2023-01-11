@@ -20,7 +20,7 @@ const Portfolio = () => {
       transition={transition1}
       className='section overflow-hidden Overflow-y-visible sm_special:overflow-y-visible '
     >
-      <div className='container mx-auto h-full pt-[8rem] md:pt-[15rem]'>
+      <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-around xl:max-w-[100rem] xl:m-auto'>
           {/* text */}
           <motion.div
