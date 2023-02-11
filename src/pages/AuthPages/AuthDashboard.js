@@ -4,11 +4,14 @@ import { NavLink, Outlet } from 'react-router-dom'
 const AuthDashboard = () => {
   return (
     <>
-      <h2 className='h1 text-center mt-[5rem] text-[4rem]'>Welcome Lusiane</h2>
+      <div className='flex justify-between'>
+        <h2 className='h1 text-left mt-[1rem] ml-9 text-[3rem]'>Welcome Lusiane</h2>
+        <button className='bg-black text-white w-[7rem] h-[3rem] mr-9 mt-[1rem]'>Logout</button>
+      </div>
 
-      <div className='mt-[12rem] w-[70%] mx-auto'>
-        
-        <div className=''>
+      <div className='mt-[4rem] w-[70%] mx-auto'>
+        <p className='text-center text-[2.5rem]'>You can choose any of the following options.</p>
+        <div className='mt-[4rem]'>
           <nav className='flex justify-center'>
             <NavLink className='text-[1.3rem] mr-10' to="emails">Messages</NavLink>
             <NavLink className='text-[1.3rem] mr-10' to="publications">Publication</NavLink>
