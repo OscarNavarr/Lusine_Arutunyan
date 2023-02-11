@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // import context
 import { CursorContext } from '../context/CursorContext';
+import Header from '../components/Header';
 
 const Contact = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -19,6 +20,7 @@ const Contact = () => {
       transition={transition1}
       className='section bg-white'
     >
+      <Header className='z-[30]' />
       <div className='mx-auto h-full'>
         <div className=' flex flex-col lg:flex-row h-full items-center justify-start pt-[24rem] gap-x-8 text-center lg:text-left'>
           

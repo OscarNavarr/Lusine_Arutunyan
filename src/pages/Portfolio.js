@@ -9,6 +9,7 @@ import { transition1 } from '../transitions';
 import { CursorContext } from '../context/CursorContext';
 //import ImagesSlider
 import Images from '../components/porfolio/Images';
+import Header from '../components/Header';
 
 const Portfolio = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -20,6 +21,7 @@ const Portfolio = () => {
       transition={transition1}
       className='section overflow-hidden Overflow-y-visible sm_special:overflow-y-visible '
     >
+      <Header className='z-[30]' />
       <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-around xl:max-w-[100rem] xl:m-auto'>
           {/* text */}

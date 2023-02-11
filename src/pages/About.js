@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // import cursor context
 import { CursorContext } from '../context/CursorContext';
+import Header from '../components/Header';
 
 const About = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -22,6 +23,7 @@ const About = () => {
       transition={transition1}
       className='section overflow-hidden'
     >
+      <Header className='z-[30]' />
       <div className='container mx-auto h-full relative'>
         {/* text & img wrapper */}
         <div className='flex flex-col lg:flex-row h-full items-center justify-center gap-x-24 lg:gap-x-16  sxl:gap-x-28 text-center lg:text-left lg:pt-16'>

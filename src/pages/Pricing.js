@@ -7,6 +7,7 @@ import { transition1 } from '../transitions';
 // import cursor context
 import { CursorContext } from '../context/CursorContext';
 import PricingComponent from '../components/pricing/PricingComponent';
+import Header from '../components/Header';
 
 
 const Pricing = () => {
@@ -19,6 +20,7 @@ const Pricing = () => {
         transition={transition1}
         className=''
         >
+            <Header className='z-[30]' />
             <div className='container mx-auto h-full relative'>
                <h1 className='text-center text-3xl pt-24 lg:pt-36'>Pricing of my services</h1>
                 <div className='flex flex-wrap lg:flex-row h-full items-center justify-around text-center lg:text-left lg:pt-16 pb-[8rem]'>
