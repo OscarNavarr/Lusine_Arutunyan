@@ -7,9 +7,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // import cursor context
 import { CursorContext } from './context/CursorContext';
+// import Authorized Pages
 import Login from './pages/AuthPages/Login';
 import {AuthDashboard} from './pages/AuthPages';
+// import Authorized Components
 import { AuthEmailComponent, AuthProfilComponent, AuthPublicationsComponent } from './components/AutComponents';
+import { UserAuthContextProvider } from './context/UserAuthContext';
+import ProtectedRoute from './components/AutComponents/ProtectedRoute';
 
 
 
@@ -24,15 +28,21 @@ const App = () => {
         {/**
          * Auth Routes
          */}
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          
-          <Route path='/dashboard' element={<AuthDashboard/>}>
-            <Route path='emails' element={<AuthEmailComponent/>}/>
-            <Route path='publications' element={<AuthPublicationsComponent/>}/>
-            <Route path='profile' element={<AuthProfilComponent/>}/>
-          </Route>
-        </Routes>
+        <UserAuthContextProvider>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            
+            <Route path='/dashboard' element={
+              <ProtectedRoute>
+                <AuthDashboard/>
+              </ProtectedRoute>
+            }>
+              <Route path='emails' element={<AuthEmailComponent/>}/>
+              <Route path='publications' element={<AuthPublicationsComponent/>}/>
+              <Route path='profile' element={<AuthProfilComponent/>}/>
+            </Route>
+          </Routes>
+        </UserAuthContextProvider>
       </Router>
       {/* cursor */}
       <motion.div

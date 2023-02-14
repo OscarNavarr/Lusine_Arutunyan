@@ -1,7 +1,10 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
+import { useUserAuth } from '../../context/UserAuthContext'
 
 const AuthDashboard = () => {
+  const { user } = useUserAuth();
+
   return (
     <>
       <div className='flex justify-between'>
@@ -23,7 +26,7 @@ const AuthDashboard = () => {
       </div>
       
 
-      <Outlet />
+      <Outlet/>
     </>
   )
 }
