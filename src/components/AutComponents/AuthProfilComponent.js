@@ -1,6 +1,7 @@
-// TODO: ME FALTA QUE EL SITIO VALIDE SI LAS CONTRASEÑAS SON IGUALES 
-// TODO: ME FALTA QUE EL SITIO MUESTRE LOS ERRORES DE CONTRASEÑA Y CUALQUIER OTRO ERROR QUE PUEDA OCURRIR 
 // TODO: DECIR QUE SI NO QUIERE CAMBIAR EL EMAIL NO TIENE QUE HACERLO
+// TODO: HACER QUE LA FUNCION handleSubmit CAMBIE EL EMAIL Y LA CONTRASEÑA SIN CREAR UN NUEVO REGISTRO EN LA BASE DE DATOS
+// TODO: PONER EN LOS INPUTS DE PASSWORD UN ICONO DE UN OJO QUE ME PERMITA VER O DEJAR DE VER LA CONTRASEÑA A MI VOLUNTAD
+// TODO: MEJORAR LA PARTE VISUAL DEL COMPONENTE DONDE SE MUESTRAN LOS ERROR (<ErrorMessages/>)
 
 import React from 'react'
 import { useState } from 'react'
@@ -18,6 +19,8 @@ const AuthProfilComponent = () => {
     const { signUp } = useUserAuth();
     const { user } = useUserAuth();
 
+    //EL VERDADERO OBJETIVO DE LA FUNCION AQUI DEBAJO ES QUE CAMBIE EL EMAIL Y LA CONTRASEÑA, NO QUE CREE UN NUEVO USUARIO
+
     const handleSubmit = async(e) =>{
         e.preventDefault();
         setError("");
@@ -27,10 +30,14 @@ const AuthProfilComponent = () => {
                 setEmail(user.email)
             }
         */
-        try {
-            await signUp(email, password);
-        } catch (error) {
-            setError(error.message);
+       if( password === confirmPassword){
+            try {
+                await signUp(email, password);
+            } catch (error) {
+                setError(error.message);
+            }
+        }else{
+            setError("Passwords are not the same");
         }
        
     }

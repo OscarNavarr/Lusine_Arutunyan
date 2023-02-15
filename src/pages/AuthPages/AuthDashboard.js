@@ -1,15 +1,28 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../context/UserAuthContext'
+import { auth } from '../../firebase';
 
 const AuthDashboard = () => {
-  const { user } = useUserAuth();
+  const { handlesignOut } = useUserAuth();
+  const navigate = useNavigate();
+
+  //Button SignOut
+  const logOut = () =>{
+    handlesignOut(auth);
+    navigate("/");
+  }
 
   return (
     <>
       <div className='flex justify-between'>
         <h2 className='h1 text-left mt-[1rem] ml-9 text-[3rem]'>Welcome Lusiane</h2>
-        <button className='bg-black text-white w-[7rem] h-[3rem] mr-9 mt-[1rem]'>Logout</button>
+        <button 
+          className='bg-black text-white w-[7rem] h-[3rem] mr-9 mt-[1rem]'
+          onClick={logOut}
+        >
+          Logout
+        </button>
       </div>
 
       <div className='mt-[4rem] w-[70%] mx-auto'>

@@ -15,6 +15,13 @@ export function UserAuthContextProvider({ children }) {
     function signUp(email, password){
         return createUserWithEmailAndPassword(auth, email, password);
     };
+    function handlesignOut(auth){
+        return signOut(auth).then(() => {
+            console.log('The logOut was a success ')
+        }).catch((error) => {
+            console.log('Hay un error:', error);
+        })
+    }
     function logIn(email, password){
         return signInWithEmailAndPassword(auth, email, password);
     };
@@ -28,7 +35,7 @@ export function UserAuthContextProvider({ children }) {
         }
     }, []);
 
-    return  <userAuthContext.Provider value={{user, signUp, logIn}}>
+    return  <userAuthContext.Provider value={{user, signUp, handlesignOut, logIn}}>
                 {children}
             </userAuthContext.Provider>
 
