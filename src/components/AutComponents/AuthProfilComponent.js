@@ -1,8 +1,8 @@
 // TODO: DECIR QUE SI NO QUIERE CAMBIAR EL EMAIL NO TIENE QUE HACERLO
-// TODO: HACER QUE LA FUNCION handleSubmit CAMBIE EL EMAIL Y LA CONTRASEÑA SIN CREAR UN NUEVO REGISTRO EN LA BASE DE DATOS
+
 // TODO: PONER EN LOS INPUTS DE PASSWORD UN ICONO DE UN OJO QUE ME PERMITA VER O DEJAR DE VER LA CONTRASEÑA A MI VOLUNTAD
 // TODO: MEJORAR LA PARTE VISUAL DEL COMPONENTE DONDE SE MUESTRAN LOS ERROR (<ErrorMessages/>)
-// user: unika@gmail.com    password:123456789
+// user: unika@gmail.com    password:eterno
 import React from 'react'
 import { useState } from 'react'
 import { useUserAuth } from '../../context/UserAuthContext';
@@ -11,14 +11,15 @@ import { auth } from '../../firebase';
 
 const AuthProfilComponent = () => {
 
-    const [email, setEmail] = useState("");
+    const { updatingEmail, updatingPassword } = useUserAuth();
+    const { user } = useUserAuth();
+
+    const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     
 
-    const { updatingEmail, updatingPassword } = useUserAuth();
-    const { user } = useUserAuth();
 
     //EL VERDADERO OBJETIVO DE LA FUNCION AQUI DEBAJO ES QUE CAMBIE EL EMAIL Y LA CONTRASEÑA, NO QUE CREE UN NUEVO USUARIO
 
@@ -64,6 +65,7 @@ const AuthProfilComponent = () => {
                             type='text' 
                             className='w-[20rem] h-[3rem] border-b-2 border-current mb-3'  
                             placeholder={user && user.email}
+                            value={email && email}
                             onChange={ (e) => setEmail(e.target.value)}
                         />
                         <br/>

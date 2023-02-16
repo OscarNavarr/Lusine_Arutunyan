@@ -15,24 +15,13 @@ export function UserAuthContextProvider({ children }) {
 
     function updatingEmail(auth,email){
      
-        const emailUpdate = updateEmail(auth.currentUser,email).then(() => {    
-        return emailUpdate;
+        return updateEmail(auth.currentUser,email);
             
-        }).catch((error) => {
-            console.log(error);
-        });
-        
     };
     function updatingPassword(auth,password){
 
-        const passwordUpdate = updatePassword(auth.currentUser,password).then(() => {    
-        return passwordUpdate;
-
-        }).catch((error) => {
-            console.log(error);
-        });
-
-       
+        return updatePassword(auth.currentUser,password);       
+    
     };
 
     function handlesignOut(auth){
