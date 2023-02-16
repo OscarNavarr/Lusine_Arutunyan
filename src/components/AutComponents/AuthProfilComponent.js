@@ -2,11 +2,12 @@
 // TODO: HACER QUE LA FUNCION handleSubmit CAMBIE EL EMAIL Y LA CONTRASEÑA SIN CREAR UN NUEVO REGISTRO EN LA BASE DE DATOS
 // TODO: PONER EN LOS INPUTS DE PASSWORD UN ICONO DE UN OJO QUE ME PERMITA VER O DEJAR DE VER LA CONTRASEÑA A MI VOLUNTAD
 // TODO: MEJORAR LA PARTE VISUAL DEL COMPONENTE DONDE SE MUESTRAN LOS ERROR (<ErrorMessages/>)
-
+// user: unika@gmail.com    password:123456789
 import React from 'react'
 import { useState } from 'react'
 import { useUserAuth } from '../../context/UserAuthContext';
 import ErrorMessages from './ErrorMessages';
+import { auth } from '../../firebase';
 
 const AuthProfilComponent = () => {
 
@@ -16,7 +17,7 @@ const AuthProfilComponent = () => {
     const [error, setError] = useState("");
     
 
-    const { signUp } = useUserAuth();
+    const { updatingEmail, updatingPassword } = useUserAuth();
     const { user } = useUserAuth();
 
     //EL VERDADERO OBJETIVO DE LA FUNCION AQUI DEBAJO ES QUE CAMBIE EL EMAIL Y LA CONTRASEÑA, NO QUE CREE UN NUEVO USUARIO
@@ -32,7 +33,10 @@ const AuthProfilComponent = () => {
         */
        if( password === confirmPassword){
             try {
-                await signUp(email, password);
+                 
+                await updatingEmail(auth, email);
+                await updatingPassword(auth, password);
+
             } catch (error) {
                 setError(error.message);
             }

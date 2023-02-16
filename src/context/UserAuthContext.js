@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import {
-    createUserWithEmailAndPassword,
+    updateEmail,
+    updatePassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
@@ -12,15 +13,30 @@ const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
     const [user, setUser] = useState(""); 
 
-    function signUp(email, password){
-        return createUserWithEmailAndPassword(auth, email, password);
-    };
-    function handlesignOut(auth){
-        return signOut(auth).then(() => {
-            console.log('The logOut was a success ')
+    function updatingEmail(auth,email){
+     
+        const emailUpdate = updateEmail(auth.currentUser,email).then(() => {    
+        return emailUpdate;
+            
         }).catch((error) => {
-            console.log('Hay un error:', error);
-        })
+            console.log(error);
+        });
+        
+    };
+    function updatingPassword(auth,password){
+
+        const passwordUpdate = updatePassword(auth.currentUser,password).then(() => {    
+        return passwordUpdate;
+
+        }).catch((error) => {
+            console.log(error);
+        });
+
+       
+    };
+
+    function handlesignOut(auth){
+        return signOut(auth);
     }
     function logIn(email, password){
         return signInWithEmailAndPassword(auth, email, password);
@@ -35,7 +51,7 @@ export function UserAuthContextProvider({ children }) {
         }
     }, []);
 
-    return  <userAuthContext.Provider value={{user, signUp, handlesignOut, logIn}}>
+    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, handlesignOut, logIn}}>
                 {children}
             </userAuthContext.Provider>
 
