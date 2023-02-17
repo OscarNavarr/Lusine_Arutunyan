@@ -1,3 +1,4 @@
+// TODO: ponerle un border button a los menus de navegacion para saber en cual he clicado
 import React from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useUserAuth } from '../../context/UserAuthContext'
