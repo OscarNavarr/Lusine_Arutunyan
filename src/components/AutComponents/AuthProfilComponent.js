@@ -10,11 +10,13 @@ import { auth } from '../../firebase';
 //icons
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const AuthProfilComponent = () => {
 
-    const { updatingEmail, updatingPassword } = useUserAuth();
+    const { updatingEmail, updatingPassword, verificationWithEmail } = useUserAuth();
     const { user } = useUserAuth();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState("");
@@ -47,10 +49,11 @@ const AuthProfilComponent = () => {
         */
        if( password === confirmPassword){
             try {
-                 
                 await updatingEmail(auth, email);
                 await updatingPassword(auth, password);
-
+                await verificationWithEmail(auth);
+                
+                navigate("/verification");
             } catch (error) {
                 setError(error.message);
             }
@@ -109,7 +112,7 @@ const AuthProfilComponent = () => {
                             type={Type} 
                             className='w-[20rem] h-[3rem] border-b-2 border-current mb-3' 
                             placeholder='Please repeat the password' 
-                            onChange={ (e) => setPassword(e.target.value)}
+                            onChange={ (e) => setConfirmPassword(e.target.value)}
                         />
                         <FaEyeSlash 
                             className={`text-[1.5rem] my-auto ${visible ? 'hidden' : 'block'}`}

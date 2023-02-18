@@ -14,6 +14,7 @@ import {AuthDashboard} from './pages/AuthPages';
 import { AuthEmailComponent, AuthProfilComponent, AuthPublicationsComponent } from './components/AutComponents';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './components/AutComponents/ProtectedRoute';
+import UserVerification from './pages/AuthPages/UserVerification';
 
 
 
@@ -41,6 +42,7 @@ const App = () => {
               <Route path='publications' element={<AuthPublicationsComponent/>}/>
               <Route path='profile' element={<AuthProfilComponent/>}/>
             </Route>
+            <Route path='/verification' element={<UserVerification/>}/>
           </Routes>
         </UserAuthContextProvider>
       </Router>

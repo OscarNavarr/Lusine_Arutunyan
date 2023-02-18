@@ -4,7 +4,8 @@ import {
     updatePassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from "../firebase";
 
@@ -23,6 +24,9 @@ export function UserAuthContextProvider({ children }) {
         return updatePassword(auth.currentUser,password);       
     
     };
+    function verificationWithEmail(auth){
+        return sendEmailVerification(auth.currentUser);
+    };
 
     function handlesignOut(auth){
         return signOut(auth);
@@ -40,7 +44,7 @@ export function UserAuthContextProvider({ children }) {
         }
     }, []);
 
-    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, handlesignOut, logIn}}>
+    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, verificationWithEmail, handlesignOut, logIn}}>
                 {children}
             </userAuthContext.Provider>
 
