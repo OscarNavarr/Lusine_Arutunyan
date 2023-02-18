@@ -1,5 +1,6 @@
 
 // TODO: Mostrar un mensaje que me diga cuando se actualizó el email y el password correctamente
+// TODO: Ahora recibo un email de verificacion en el login antes de acceder debo verificar que el email del usuario esté verificado sino dar un error
 
 import React from 'react'
 import { useState } from 'react'
