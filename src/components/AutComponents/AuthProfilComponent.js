@@ -1,7 +1,4 @@
-
-// TODO: Mostrar un mensaje que me diga cuando se actualizó el email y el password correctamente
 // TODO: Ahora recibo un email de verificacion en el login antes de acceder debo verificar que el email del usuario esté verificado sino dar un error
-
 import React from 'react'
 import { useState } from 'react'
 import { useUserAuth } from '../../context/UserAuthContext';
@@ -24,7 +21,7 @@ const AuthProfilComponent = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [visible, setVisible] = useState(false);
-    
+
     //Hooks for password inputs
     const [Type, setType] = useState('password');
     
@@ -40,16 +37,15 @@ const AuthProfilComponent = () => {
         setType('password');
     }
     const handleSubmit = async(e) =>{
+
         e.preventDefault();
-        setError("");
-        /*
-        Example of how will be the update email 
-            if(email === ""){
-                setEmail(user.email)
-            }
-        */
-       if( password === confirmPassword){
+        
+        if( password === confirmPassword){
             try {
+
+                setError("");
+                
+                
                 await updatingEmail(auth, email);
                 await updatingPassword(auth, password);
                 await verificationWithEmail(auth);
