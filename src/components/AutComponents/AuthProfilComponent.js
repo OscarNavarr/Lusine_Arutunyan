@@ -39,18 +39,17 @@ const AuthProfilComponent = () => {
     const handleSubmit = async(e) =>{
 
         e.preventDefault();
-        
+        setError("");
+        const promise = [];
+
+        if(user.email !== email){
+            promise.push(await updatingEmail(auth, email));
+        }
         if( password === confirmPassword){
             try {
-
-                setError("");
                 
+                promise.push(await updatingPassword(auth, password));
                 
-                await updatingEmail(auth, email);
-                await updatingPassword(auth, password);
-                await verificationWithEmail(auth);
-                
-                navigate("/verification");
             } catch (error) {
                 setError(error.message);
             }
@@ -58,6 +57,14 @@ const AuthProfilComponent = () => {
             setError("Passwords are not the same");
         }
        
+        Promise.all(promise)
+       .then(() => {
+            verificationWithEmail(auth);        
+            navigate("/verification");
+       })
+       .catch(() => {
+            setError('Failed to update account')
+       })
     }
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>

@@ -6,6 +6,7 @@ import {
     signOut,
     onAuthStateChanged,
     sendEmailVerification,
+    sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from "../firebase";
 
@@ -24,8 +25,17 @@ export function UserAuthContextProvider({ children }) {
         return updatePassword(auth.currentUser,password);       
     
     };
+    
+    // THIS FUNCTION IS FOR THE LOGIN PAGE
+    function resetPassword(auth,email){
+
+        return sendPasswordResetEmail(auth,email);
+
+    }
     function verificationWithEmail(auth){
+       
         return sendEmailVerification(auth.currentUser);
+    
     };
 
     function handlesignOut(auth){
@@ -44,7 +54,7 @@ export function UserAuthContextProvider({ children }) {
         }
     }, []);
 
-    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, verificationWithEmail, handlesignOut, logIn}}>
+    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, verificationWithEmail, handlesignOut, resetPassword, logIn}}>
                 {children}
             </userAuthContext.Provider>
 
