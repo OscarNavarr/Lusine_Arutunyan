@@ -42,7 +42,11 @@ const App = () => {
               <Route path='publications' element={<AuthPublicationsComponent/>}/>
               <Route path='profile' element={<AuthProfilComponent/>}/>
             </Route>
-            <Route path='/verification' element={<UserVerification/>}/>
+            <Route path='/verification' element={
+            <ProtectedRoute>
+              <UserVerification/>
+            </ProtectedRoute>
+            }/>
           </Routes>
         </UserAuthContextProvider>
       </Router>

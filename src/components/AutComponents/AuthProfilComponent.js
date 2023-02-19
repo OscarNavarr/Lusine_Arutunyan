@@ -1,14 +1,17 @@
 // TODO: Ahora recibo un email de verificacion en el login antes de acceder debo verificar que el email del usuario esté verificado sino dar un error
+// TODO: Si el usuario actualiza la contraseña pero no el email, no hace falta validar el email y redirigir al usaurio a la siguiente pagina.DEBO ARREGLAR ESTO
+// SOLO CUANDO SE CAMBIA EL EMAIL SE DEBE REDIRIGIR AL USUARIO A LA PAGINA DE VERIFICACION Y ENVIARLE UN EMAIL 
+
 import React from 'react'
 import { useState } from 'react'
 import { useUserAuth } from '../../context/UserAuthContext';
 import ErrorMessages from './ErrorMessages';
 import { auth } from '../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 //icons
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 
 const AuthProfilComponent = () => {
 
@@ -53,7 +56,7 @@ const AuthProfilComponent = () => {
                 Promise.all(promise)
                 .then(() => {
                      verificationWithEmail(auth);        
-                     navigate("/verification");
+                     navigate("/verification",{state:'',replace:true});
                 })
                 .catch(() => {
                      setError('Failed to update account')

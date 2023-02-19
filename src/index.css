@@ -27,6 +27,9 @@
     border: 1px solid rgba(171, 171, 171, 0.07);
   }
 }
+.active{
+  border-bottom: 4px solid #8d8e94 ;
+}
 @media only screen and (max-height: 527px) {
   /* For mobile small phones: */
   .Overflow-y-visible {

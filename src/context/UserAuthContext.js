@@ -42,7 +42,9 @@ export function UserAuthContextProvider({ children }) {
         return signOut(auth);
     }
     function logIn(email, password){
+
         return signInWithEmailAndPassword(auth, email, password);
+       
     };
 
     useEffect(() => {
