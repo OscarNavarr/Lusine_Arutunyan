@@ -39,6 +39,7 @@ const Login = () => {
         try {
             await logIn(email, password);
             if (user.emailVerified) {
+              setType('password');
               navigate("/dashboard");
             } else {
               setError('The email is not verified, please check your email and look for the email we sent you with a verification link');

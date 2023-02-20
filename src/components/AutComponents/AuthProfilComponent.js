@@ -1,4 +1,4 @@
-// TODO: Ahora recibo un email de verificacion en el login antes de acceder debo verificar que el email del usuario esté verificado sino dar un error
+
 // TODO: Si el usuario actualiza la contraseña pero no el email, no hace falta validar el email y redirigir al usaurio a la siguiente pagina.DEBO ARREGLAR ESTO
 // SOLO CUANDO SE CAMBIA EL EMAIL SE DEBE REDIRIGIR AL USUARIO A LA PAGINA DE VERIFICACION Y ENVIARLE UN EMAIL 
 
@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 //icons
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from 'react-icons/fa';
+import CorrectMessages from './CorrectMessages';
 
 const AuthProfilComponent = () => {
 
@@ -23,6 +24,7 @@ const AuthProfilComponent = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [correct, sentCorrect] = useState("");
     const [visible, setVisible] = useState(false);
 
     //Hooks for password inputs
@@ -45,22 +47,33 @@ const AuthProfilComponent = () => {
         setError("");
         const promise = [];
 
-        if(user.email !== email){
-            promise.push(await updatingEmail(auth, email));
-        }
-        if( password === confirmPassword){
+
+        if(user.email !== email && password === confirmPassword){
             try {
                 
+                promise.push(await updatingEmail(auth, email));
                 promise.push(await updatingPassword(auth, password));
                 
                 Promise.all(promise)
                 .then(() => {
-                     verificationWithEmail(auth);        
+                     verificationWithEmail(auth);
+                     setType('password');     
                      navigate("/verification",{state:'',replace:true});
                 })
                 .catch(() => {
                      setError('Failed to update account')
                 })
+            } catch (error) {
+                setError(error.message);
+            }
+        }else if(password !== confirmPassword){
+            setError("Passwords are not the same");
+        }
+        if( user.email === email && password === confirmPassword){
+            try {
+                await updatingPassword(auth, password);
+                setType('password');
+                sentCorrect("Your password has been successfully updated!");
             } catch (error) {
                 setError(error.message);
             }
@@ -78,6 +91,7 @@ const AuthProfilComponent = () => {
         {/*ESTO MUESTRA LOS ERRORES */}
         <div className='flex justify-center pt-7'>
             <ErrorMessages error={error}/>
+            <CorrectMessages message={correct} />
         </div>
 
         <div className='pt-[3rem] flex justify-center'>
