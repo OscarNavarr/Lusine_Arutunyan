@@ -9,6 +9,7 @@ import {
     sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from "../firebase";
+import { uploadBytes } from "firebase/storage";
 
 const userAuthContext = createContext();
 
@@ -37,15 +38,22 @@ export function UserAuthContextProvider({ children }) {
         return sendEmailVerification(auth.currentUser);
     
     };
-
+    
     function handlesignOut(auth){
         return signOut(auth);
-    }
-    function logIn(email, password){
-
-        return signInWithEmailAndPassword(auth, email, password);
-       
     };
+    function logIn(email, password){
+        
+        return signInWithEmailAndPassword(auth, email, password);
+        
+    };
+    
+    function handleUploadImg(imageRef, img){
+
+        return uploadBytes(imageRef, img);
+
+    };
+    
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -56,9 +64,18 @@ export function UserAuthContextProvider({ children }) {
         }
     }, []);
 
-    return  <userAuthContext.Provider value={{user, updatingEmail, updatingPassword, verificationWithEmail, handlesignOut, resetPassword, logIn}}>
+    return  <userAuthContext.Provider value={
+        {user, 
+        handleUploadImg,
+        updatingEmail, 
+        updatingPassword, 
+        verificationWithEmail, 
+        handlesignOut, 
+        resetPassword, 
+        logIn, 
+        }}>
                 {children}
-            </userAuthContext.Provider>
+        </userAuthContext.Provider>
 
 }
 
