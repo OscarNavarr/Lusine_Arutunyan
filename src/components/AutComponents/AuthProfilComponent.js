@@ -88,7 +88,7 @@ const AuthProfilComponent = () => {
         <p className='text-center text-[1.3rem]'>Change data of {user && user.email}</p>
         <p className='text-center mt-9'>If you do not want to change the email you can leave that field as it is.</p>
         
-        {/*ESTO MUESTRA LOS ERRORES */}
+        {/*Show Result */}
         <div className='flex justify-center pt-7'>
             <ErrorMessages error={error}/>
             <CorrectMessages message={correct} />
