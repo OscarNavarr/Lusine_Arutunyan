@@ -26,7 +26,8 @@ const AuthProfilComponent = () => {
     const [error, setError] = useState("");
     const [correct, sentCorrect] = useState("");
     const [visible, setVisible] = useState(false);
-
+    
+    
     //Hooks for password inputs
     const [Type, setType] = useState('password');
     

@@ -12,7 +12,7 @@ const CorrectMessages = (props) => {
   return (
     <>
       {props.message && (
-          <div className={`bg-black ${visibility}  text-white min-h-[3.5rem] max-w-[35rem] px-4 pt-2 pb-4`}>
+          <div className={`bg-black ${visibility}  text-white min-h-[3.5rem] max-w-[35rem] pl-4 pr-2 pt-2 pb-4`}>
             <div className='flex justify-end mb-2'>
                 <button onClick={handleVisibility}>
                     <FaTimes className='w-5 h-5 text-white	'/>
@@ -20,7 +20,7 @@ const CorrectMessages = (props) => {
             </div>
             <div className='flex'>
                 <FaRegCheckCircle className='mr-3 w-6 h-6 text-green-500'/>
-                <p className='font-bold text-[1.1rem]'>{props.message}</p>
+                <p className='font-bold text-[1.1rem] mr-[2rem]'>{props.message}</p>
             </div>
         </div>
       )}
