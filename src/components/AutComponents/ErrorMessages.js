@@ -5,9 +5,9 @@ const ErrorMessages = (props) => {
   const [visibility, setVisibility] = useState("block");
     
     const handleVisibility = () => {
-           
+        const errorValue = null;
+        props.onErrorValueChange(errorValue);
         setVisibility('hidden');
-    
     }
   return (
     <>

@@ -1,8 +1,7 @@
-// TODO: CUANDO EL USUARIO SELECCIONE UNA IMAGEN DEBO HACER QUE EL TEXTO QUE LE INDICA AL USUARIO DE SELECCIONAR UNA IMAGEN, DESAPAREZCA
 
 // TODO: DEBO VERIFICAR QUEL ARCHIVO QUE SE ELEGIO SEA DE TIPO JPG,JPEF,PNG 
-// TODO: HACER UNA FUNCION QUE VALIDE SI ESTA LA IMAGEN Y LA CATEGORIA DE IMAGEN Y OTRA QUE SE ENCARGUE DE PUBLICAR LA IMAGEN
-// TODO: HACER PONER TODOS LOS BOTONES Y INPUTS DESABILITADOS MIENTRAS SE SUBE LA IMAGE
+
+// TODO: PONER TODOS LOS BOTONES Y INPUTS DESABILITADOS MIENTRAS SE SUBE LA IMAGE
 import React, { useState } from 'react';
 import { storage } from '../../firebase';
 import { ref} from 'firebase/storage';
@@ -48,54 +47,54 @@ const AuthPublicationsComponent = () => {
     setImagePreview(null);
     setImageUpload(null);
     fileInput.value = null;
+    return;
+  }
+  const deleteDataFromErrorMessages = (errorValue) =>{
+    setImagePreview(errorValue);
+    setImageUpload(errorValue);
+    fileInput.value = (errorValue);
   }
 
+  /* 
+  *
+  *
+  * BUTON DE UPLOAD
+  * 
+  * 
+  */
   const uploadImage = async() => {
     
-    if(imageUpload == null){
-      setError('Please select an image');
-      deleteData();
-      return;
-    };
-    if(selectValue == null){
-      setError('Please select an image category');
-      deleteData();
-      return;
-    }
-    if(selectValue == null &&imageUpload == null ){
-      setError('Please select an image and an image category');
-      deleteData();
-      return; 
-    }
-    if(imageUpload && selectValue){
-      const imageRef = ref(storage, `${selectValue ? selectValue : 'images'}/${imageUpload.name + v4()}`);
-      try {
-        await handleUploadImg(imageRef, imageUpload);
+      if(imageUpload && selectValue){
+
+        const imageRef = ref(storage, `${selectValue ? selectValue : 'images'}/${imageUpload.name + v4()}`);
+        try {
+          await handleUploadImg(imageRef, imageUpload);
+          
+          deleteData();
+          sentCorrect("The image has been published successfully");
         
-        deleteData();
-        sentCorrect("The image has been published successfully");
+        } catch (error) {
+          
+          setError(error)
+          
+        }
       
-      } catch (error) {
-        
-        setError(error)
-        
-      }  
-    }
-  
-    
-    
+      }else{
+        setError('You must choose a category of photography and then select an image.')
+        deleteData();
+      }
   };
   
-
+  
 
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
       <p className='text-center text-[1.3rem]'>Make a post or manage images </p>
-      <p className='text-justify mt-9'>To make a post please choose an image category, then select an image and click the "Upload Image" button.</p>
+      {!imagePreview && <p className='text-justify mt-9'>To make a post please choose an image category, then select an image and click the "Upload Image" button.</p>}
 
       {/*Show Result */}
       <div className='flex justify-center pt-7'>
-        <ErrorMessages error={error}/>
+        <ErrorMessages error={error} onErrorValueChange={deleteDataFromErrorMessages}/>
         <CorrectMessages message={correct} />
       </div>
 
