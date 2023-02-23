@@ -17,7 +17,7 @@ const AuthDashboard = () => {
   return (
     <>
       <div className='flex justify-between'>
-        <h2 className='h1 text-left mt-[1rem] ml-9 text-[3rem]'>Welcome Lusiane</h2>
+        <h2 className='h1 text-left mt-[1rem] ml-9 text-[3rem]'>Welcome</h2>
         <button 
           className='bg-black text-white w-[7rem] h-[3rem] mr-9 mt-[1rem]'
           onClick={logOut}

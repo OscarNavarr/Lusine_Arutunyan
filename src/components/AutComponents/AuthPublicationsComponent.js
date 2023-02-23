@@ -7,6 +7,7 @@ import { storage } from '../../firebase';
 import { ref} from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useUserAuth } from '../../context/UserAuthContext';
+
 //icons
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaUpload } from 'react-icons/fa';
@@ -20,7 +21,10 @@ const AuthPublicationsComponent = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [correct, sentCorrect] = useState("");
   const [error, setError] = useState("");
+  const [showError, setShowError] = useState(false);
   
+  const [test, setTest] = useState('')
+
   //HOOKS FOR SELECTBOX FIELD
   const [selectValue, setSelectValue] = useState();
 
@@ -50,12 +54,32 @@ const AuthPublicationsComponent = () => {
     fileInput.value = null;
     return;
   }
-  const deleteDataFromErrorMessages = (errorValue) =>{
-    setImagePreview(errorValue);
-    setImageUpload(errorValue);
-    setError(errorValue);
-    fileInput.value = (errorValue);
+  const dataFromErrorMessages = (errorValue, valueShowError) =>{
+    
+      setTest(errorValue);
+    
   }
+  if(test === 'nulo'){
+    setImagePreview(null);
+    setImageUpload(null);
+    setError(null);
+    setShowError(null);
+    fileInput.value = ('');
+         
+  
+  }else{
+    console.log('Test no es nulo'); 
+  }
+
+  
+  
+  
+  
+ 
+
+ 
+
+  
   /* 
   *
   *
@@ -76,13 +100,13 @@ const AuthPublicationsComponent = () => {
         } catch (error) {
           
           setError(error)
-          throw error;
+          setShowError(true);
         }
       
       }else{
         setError('You must choose a category of photography and then select an image.');
-        deleteData();
-        throw new Error('You must choose a category of photography and then select an image.');
+        setShowError(true);
+        //deleteData();
       }
   };
   
@@ -95,7 +119,7 @@ const AuthPublicationsComponent = () => {
 
       {/*Show Result */}
       <div className='flex justify-center pt-7'>
-        <ErrorMessages error={error} onErrorValueChange={deleteDataFromErrorMessages}/>
+        <ErrorMessages error={error} showError={showError} onErrorValueChange={dataFromErrorMessages}/>
         <CorrectMessages message={correct} />
       </div>
 
