@@ -1,6 +1,6 @@
+// TODO: EL MOTIVO POR EL CUAL CUANDO ME APARECE UN ERROR, SE MUESTRA EL MENSAJE DE ERROR Y LUEGO SI SE VUELVE A COMETER ESE ERROR YA NO ME APARECE EL COMPONENTE QUE MOSTRABA ESE ERROR ES DEBIDO A QUE EL COMPONENTE CUANDO SE LE PIDE QUE SE OCULTE PERMANECE OCULTO MISMO SI EL ERROR CAMBIA, PERO NO SE MUESTRA PORQUE TIENE LA PROPIEDAD CSS 'HIDDEN'. DEBO PENSAR UNA FORMA DE CAMBIAR ATRAVES DE ESTE COMPONENTE LA PROPIEDAD DE HIDDEN A BLOCK AL COMPONENTE ErrorMessages.js  
 
 // TODO: DEBO VERIFICAR QUEL ARCHIVO QUE SE ELEGIO SEA DE TIPO JPG,JPEF,PNG 
-
 // TODO: PONER TODOS LOS BOTONES Y INPUTS DESABILITADOS MIENTRAS SE SUBE LA IMAGE
 import React, { useState } from 'react';
 import { storage } from '../../firebase';
@@ -46,15 +46,16 @@ const AuthPublicationsComponent = () => {
   const deleteData = () => {
     setImagePreview(null);
     setImageUpload(null);
+    setError(null);
     fileInput.value = null;
     return;
   }
   const deleteDataFromErrorMessages = (errorValue) =>{
     setImagePreview(errorValue);
     setImageUpload(errorValue);
+    setError(errorValue);
     fileInput.value = (errorValue);
   }
-
   /* 
   *
   *
@@ -63,7 +64,7 @@ const AuthPublicationsComponent = () => {
   * 
   */
   const uploadImage = async() => {
-    
+      console.log('Click');
       if(imageUpload && selectValue){
 
         const imageRef = ref(storage, `${selectValue ? selectValue : 'images'}/${imageUpload.name + v4()}`);
@@ -72,16 +73,16 @@ const AuthPublicationsComponent = () => {
           
           deleteData();
           sentCorrect("The image has been published successfully");
-        
         } catch (error) {
           
           setError(error)
-          
+          throw error;
         }
       
       }else{
-        setError('You must choose a category of photography and then select an image.')
+        setError('You must choose a category of photography and then select an image.');
         deleteData();
+        throw new Error('You must choose a category of photography and then select an image.');
       }
   };
   
