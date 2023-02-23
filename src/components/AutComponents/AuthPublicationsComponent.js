@@ -1,7 +1,7 @@
-// TODO: EL MOTIVO POR EL CUAL CUANDO ME APARECE UN ERROR, SE MUESTRA EL MENSAJE DE ERROR Y LUEGO SI SE VUELVE A COMETER ESE ERROR YA NO ME APARECE EL COMPONENTE QUE MOSTRABA ESE ERROR ES DEBIDO A QUE EL COMPONENTE CUANDO SE LE PIDE QUE SE OCULTE PERMANECE OCULTO MISMO SI EL ERROR CAMBIA, PERO NO SE MUESTRA PORQUE TIENE LA PROPIEDAD CSS 'HIDDEN'. DEBO PENSAR UNA FORMA DE CAMBIAR ATRAVES DE ESTE COMPONENTE LA PROPIEDAD DE HIDDEN A BLOCK AL COMPONENTE ErrorMessages.js  
-
 // TODO: DEBO VERIFICAR QUEL ARCHIVO QUE SE ELEGIO SEA DE TIPO JPG,JPEF,PNG 
 // TODO: PONER TODOS LOS BOTONES Y INPUTS DESABILITADOS MIENTRAS SE SUBE LA IMAGE
+// TODO: (ARREGLAR LAS VALIDACIONES).HACER QUE AUTOMATICAMENTE EL MENSAJE DE ERROR DESAPAREZCA CUANDO CUMPLO LA REGLA POR LA CUAL ME SALIÓ EL MENSAJE DE ERROR.
+
 import React, { useState } from 'react';
 import { storage } from '../../firebase';
 import { ref} from 'firebase/storage';
@@ -16,15 +16,18 @@ import CorrectMessages from './CorrectMessages';
 import SelectBox from '../SelectBox';
 
 const AuthPublicationsComponent = () => {
-  //HOOKS
+  //HOOKS FOR IMAGES
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUpload, setImageUpload] = useState(null);
+
+  //HOOKS FOR CorrectMessages COMPONENT
   const [correct, sentCorrect] = useState("");
+  const [showCorrect, sentShowCorrect] = useState(false);
+
+  //HOOKS FOR ErrorMessages COMPONENT
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
   
-  const [test, setTest] = useState('')
-
   //HOOKS FOR SELECTBOX FIELD
   const [selectValue, setSelectValue] = useState();
 
@@ -50,36 +53,36 @@ const AuthPublicationsComponent = () => {
   const deleteData = () => {
     setImagePreview(null);
     setImageUpload(null);
-    setError(null);
-    fileInput.value = null;
+    fileInput.value = ('');
     return;
   }
-  const dataFromErrorMessages = (errorValue, valueShowError) =>{
-    
-      setTest(errorValue);
-    
+  const changeVisibilityToErrorMessages = (errorValue) =>{
+
+    if(errorValue){
+      setImagePreview(null);
+      setImageUpload(null);
+      setError("");
+      setShowError(false);
+      fileInput.value = ('');
+    }else{
+      return; 
+    }
+
   }
-  if(test === 'nulo'){
-    setImagePreview(null);
-    setImageUpload(null);
-    setError(null);
-    setShowError(null);
-    fileInput.value = ('');
-         
-  
-  }else{
-    console.log('Test no es nulo'); 
+  const changeVisibilityToCorrectMessages = (correctValue) =>{
+
+    if(correctValue){
+      setImagePreview(null);
+      setImageUpload(null);
+      setError("");
+      setShowError(false);
+      sentShowCorrect(false);
+      fileInput.value = ('');
+    }else{
+      return; 
+    }
+
   }
-
-  
-  
-  
-  
- 
-
- 
-
-  
   /* 
   *
   *
@@ -88,7 +91,7 @@ const AuthPublicationsComponent = () => {
   * 
   */
   const uploadImage = async() => {
-      console.log('Click');
+      
       if(imageUpload && selectValue){
 
         const imageRef = ref(storage, `${selectValue ? selectValue : 'images'}/${imageUpload.name + v4()}`);
@@ -96,17 +99,30 @@ const AuthPublicationsComponent = () => {
           await handleUploadImg(imageRef, imageUpload);
           
           deleteData();
+          sentShowCorrect(true);
           sentCorrect("The image has been published successfully");
         } catch (error) {
           
           setError(error)
+          sentShowCorrect(false);
           setShowError(true);
         }
       
-      }else{
-        setError('You must choose a category of photography and then select an image.');
+      }else if(imageUpload && selectValue === ""){
+        setError('Please select a photography category');
+        sentShowCorrect(false);
         setShowError(true);
-        //deleteData();
+        deleteData();
+      }else if(!imageUpload && selectValue){
+        setError('Please select a photo');
+        sentShowCorrect(false);
+        setShowError(true);
+        deleteData();
+      }else {
+        setError('Please select a photography category and a photo');
+        sentShowCorrect(false);
+        setShowError(true);
+        deleteData();
       }
   };
   
@@ -119,8 +135,8 @@ const AuthPublicationsComponent = () => {
 
       {/*Show Result */}
       <div className='flex justify-center pt-7'>
-        <ErrorMessages error={error} showError={showError} onErrorValueChange={dataFromErrorMessages}/>
-        <CorrectMessages message={correct} />
+        <ErrorMessages error={error} showError={showError} onErrorValueChange={changeVisibilityToErrorMessages}/>
+        <CorrectMessages message={correct} showCorrect={showCorrect} onCorrectValueChange={changeVisibilityToCorrectMessages}/>
       </div>
 
       { imagePreview && 

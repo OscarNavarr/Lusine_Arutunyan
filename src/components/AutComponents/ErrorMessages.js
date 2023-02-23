@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaBan, FaTimes} from 'react-icons/fa';
 
 const ErrorMessages = (props) => {
-  const [visibility, setVisibility] = useState("block");
     
-    const handleVisibility = () => {
-        const errorValue = 'nulo';
-        const valueShowError = false;
+  const handleVisibility = () => {
+    
+    const errorValue = true;
+    props.onErrorValueChange(errorValue);
 
-        props.onErrorValueChange(errorValue, valueShowError);
-        setVisibility('hidden');
-    }
+  };
+
   return (
     <>
-      {props.error && (
-          <div className={`bg-black ${props.showError ? visibility : 'hidden' }  text-white min-h-[3.5rem] max-w-[35rem] pl-4 pr-2 pt-2 pb-4`}>
+      {props.showError && (
+          <div className={`bg-black ${props.showError ? 'block' : 'hidden'}  text-white min-h-[3.5rem] max-w-[35rem] pl-4 pr-2 pt-2 pb-4`}>
             <div className='flex justify-end mb-2'>
                 <button onClick={handleVisibility}>
                     <FaTimes className='w-5 h-5 text-white	'/>
