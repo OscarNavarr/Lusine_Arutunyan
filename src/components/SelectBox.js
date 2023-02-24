@@ -10,7 +10,7 @@ const SelectBox = (props) => {
    
   return (
     <>
-        <select onChange={handleChange} className='w-[10rem] h-[2rem] border-b-2 border-current'>
+        <select disabled={props.loading ? 'disabled' : ''} onChange={handleChange} className='w-[10rem] h-[2rem] border-b-2 border-current'>
             <option value="" className='p-4 mb-3'>Categorie</option>
             <option value="Professionals" className='p-4 mb-3'>Professionals</option>
             <option value="Familiar" className='p-4 mb-3'>Familiar</option>
