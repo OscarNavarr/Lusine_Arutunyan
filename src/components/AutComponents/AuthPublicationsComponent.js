@@ -201,6 +201,7 @@ const AuthPublicationsComponent = () => {
           
         </div>
       </div>
+      
       <div 
         className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>
         <LoaderSpinner/>

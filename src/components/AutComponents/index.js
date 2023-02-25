@@ -1,9 +1,9 @@
-import AuthEmailComponent from './AutEmailComponent';
+import AutViewImageComponent from './AutViewImageComponent';
 import AuthPublicationsComponent from './AuthPublicationsComponent';
 import AuthProfilComponent from './AuthProfilComponent';
 
 export{
-    AuthEmailComponent,
+    AutViewImageComponent,
     AuthPublicationsComponent,
     AuthProfilComponent,
 }

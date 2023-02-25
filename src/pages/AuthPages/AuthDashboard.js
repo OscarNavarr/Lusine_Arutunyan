@@ -30,7 +30,7 @@ const AuthDashboard = () => {
         <p className='text-center text-[2.5rem]'>You can choose any of the following options.</p>
         <div className='mt-[4rem]'>
           <nav className='flex justify-center mb-[0.2rem] '>
-            <NavLink className='text-[1.3rem] mr-10' to="emails">Messages</NavLink>
+            <NavLink className='text-[1.3rem] mr-10' to="images">Photographs</NavLink>
             <NavLink className='text-[1.3rem] mr-10' to="publications">Publication</NavLink>
             <NavLink className='text-[1.3rem]' to="profile">Account</NavLink>
           </nav>

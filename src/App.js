@@ -11,7 +11,7 @@ import { CursorContext } from './context/CursorContext';
 import Login from './pages/AuthPages/Login';
 import {AuthDashboard} from './pages/AuthPages';
 // import Authorized Components
-import { AuthEmailComponent, AuthProfilComponent, AuthPublicationsComponent } from './components/AutComponents';
+import { AutViewImageComponent, AuthProfilComponent, AuthPublicationsComponent } from './components/AutComponents';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './components/AutComponents/ProtectedRoute';
 import UserVerification from './pages/AuthPages/UserVerification';
@@ -38,7 +38,7 @@ const App = () => {
                 <AuthDashboard/>
               </ProtectedRoute>
             }>
-              <Route path='emails' element={<AuthEmailComponent/>}/>
+              <Route path='images' element={<AutViewImageComponent/>}/>
               <Route path='publications' element={<AuthPublicationsComponent/>}/>
               <Route path='profile' element={<AuthProfilComponent/>}/>
             </Route>
