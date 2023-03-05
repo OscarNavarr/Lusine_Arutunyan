@@ -1,11 +1,10 @@
 import React from 'react'
-import image from '../img/portfolio/img1.jpg';
 
-const ShowImage = () => {
+const ShowImage = (props) => {
   return (
     <div className='max-w-[16rem]'>
         <img 
-            src={image} 
+            src={props.url} 
             alt='logoimage'
             className='max-h-[20rem] rounded'
         />

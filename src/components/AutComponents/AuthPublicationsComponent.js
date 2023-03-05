@@ -10,6 +10,8 @@ import { useUserAuth } from '../../context/UserAuthContext';
 //icons
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaUpload } from 'react-icons/fa';
+
+//Components
 import ErrorMessages from './ErrorMessages';
 import CorrectMessages from './CorrectMessages';
 import SelectBox from '../SelectBox';
