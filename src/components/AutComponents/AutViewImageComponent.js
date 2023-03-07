@@ -1,5 +1,4 @@
 // TODO: MOSTRAR TODAS LAS IMAGES DE FIREBASE
-// TODO: HACER QUE CUANDO SE CAMBIE DE CATEGORÍA SE BORREN LAS IMAGENES QUE SE ESTABAN MOSTRANDO DE LA CATEGORIA ANTERIOS
 // TODO: HACER EL DISEÑO QUE MUESTRE UN MENSAJE CUANDO NO HAYA IMAGENES QUE MOSTRAR
 // TODO: MOSTRAR UN ICONO DE LOADING CUANDO LAS IMAGENES SE ESTAN CARGANDO.
 // TODO: ARREGLAR EL RESPONSIVE WEB DESING
@@ -17,7 +16,7 @@ const AutViewImageComponent = () => {
   
   //HOOKS FOR SELECTBOX FIELD
   const [selectValue, setSelectValue] = useState();
-  let storeRoute= "/";
+  let storeRoute= "";
 
   
   //GET THE VALUE OF SELECTBOX
@@ -60,10 +59,13 @@ const AutViewImageComponent = () => {
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
+          
           setImageList((prev) => [...prev, url]);
         });
       });
-    });
+    })
+    .then(setImageList([])
+    );
   }, [storeRoute]);
   
   return (
