@@ -58,27 +58,25 @@ const AutViewImageComponent = () => {
     
     //GET IMAGES FROM FIRESTORE
     useEffect(() => {
-      const imageListRef = ref(storage,storeRoute);
+      const fetchImageList = async () => {
+        const imageListRef = ref(storage, storeRoute);
         
-     
-      listAll(imageListRef)
-      
-        .then((response) => {
-        
-          response.items.forEach((item) => {
-            
-            getDownloadURL(item)
-            
-              .then((url) => {
-                setLoading(true);   
-                setImageList((prev) => [...prev, url]);
+        try {
+          const response = await listAll(imageListRef);
+         
+          setLoading(true);
+          const urls = await Promise.all(response.items.map(async (item) => {
+            const url = await getDownloadURL(item);
+            return url;
+          }));
+          setImageList(urls);
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+        }
+      };
     
-            });
-          });
-        
-        })
-        .then(setImageList([]))
-        .then(setLoading(false));
+      fetchImageList();
     }, [storeRoute]);
    
   return (
@@ -125,5 +123,32 @@ export default AutViewImageComponent
       };
     
       fetchImageList();
+    }, [storeRoute]);
+
+
+    OLD METHOD
+
+    useEffect(() => {
+      const imageListRef = ref(storage,storeRoute);
+        
+     
+      listAll(imageListRef)
+      
+        .then((response) => {
+        
+          response.items.forEach((item) => {
+            
+            getDownloadURL(item)
+            
+              .then((url) => {
+                setLoading(true);   
+                setImageList((prev) => [...prev, url]);
+    
+            });
+          });
+        
+        })
+        .then(setImageList([]))
+        .then(setLoading(false));
     }, [storeRoute]);
  */
