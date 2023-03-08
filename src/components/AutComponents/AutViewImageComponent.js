@@ -1,6 +1,4 @@
-// TODO: MOSTRAR TODAS LAS IMAGES DE FIREBASE
-// TODO: HACER EL DISEÑO QUE MUESTRE UN MENSAJE CUANDO NO HAYA IMAGENES QUE MOSTRAR
-// TODO: MOSTRAR UN ICONO DE LOADING CUANDO LAS IMAGENES SE ESTAN CARGANDO.
+// TODO: MOSTRAR TODAS LAS FOTOS CUANDO SE MUESTRE ESTE COMPONENTE AL INICIO 
 // TODO: ARREGLAR EL RESPONSIVE WEB DESING
 
 import React, { useEffect, useState } from 'react'
@@ -10,6 +8,10 @@ import ShowImage from '../ShowImage'
 import { storage } from '../../firebase';
 import { ref, listAll, getDownloadURL} from 'firebase/storage';
 import LoaderSpinner from '../LoaderSpinner';
+import NotImageFound from '../NotImageFound';
+
+import { motion } from 'framer-motion'
+import { transition1 } from '../../transitions';
 
 const AutViewImageComponent = () => {
   
@@ -87,15 +89,36 @@ const AutViewImageComponent = () => {
           <SelectBox onValueChange={handleSelectBoxValue}/>
         </div>
       </div>
-      <div className=' mt-[3rem] grid grid-cols-4 gap-4'>
-        {imageList.map((url,index) => {
-          return <ShowImage key={index} url={url}/>
-        })}
-        <div 
-        className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>
-          <LoaderSpinner/>
-        </div>
-      </div>
+
+      {/***** ***** ***** ***** *****/}
+      
+      {/* IMAGE NOT FOUND COMPONENT */}
+      
+      {imageList.length===0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={transition1}
+        >
+          <NotImageFound/>
+        </motion.div>
+      )}
+      
+      {/***** ***** ***** ***** *****/}
+      {
+        imageList.length>0 && (
+          <div className=' mt-[3rem] grid grid-cols-4 gap-4'>
+            {imageList.map((url,index) => {
+              return <ShowImage key={index} url={url}/>
+            })}
+            <div 
+            className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>
+              <LoaderSpinner/>
+            </div>
+          </div>
+        )
+      }
+      
     
     </div>
   )
