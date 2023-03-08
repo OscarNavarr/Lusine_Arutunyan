@@ -9,10 +9,14 @@ import ShowImage from '../ShowImage'
 
 import { storage } from '../../firebase';
 import { ref, listAll, getDownloadURL} from 'firebase/storage';
+import LoaderSpinner from '../LoaderSpinner';
 
 const AutViewImageComponent = () => {
   
   const [imageList, setImageList] = useState([]);
+  
+  //Hooks for loaderSpinner Components
+  const [loading, setLoading] = useState(false);
   
   //HOOKS FOR SELECTBOX FIELD
   const [selectValue, setSelectValue] = useState();
@@ -54,20 +58,29 @@ const AutViewImageComponent = () => {
     
     //GET IMAGES FROM FIRESTORE
     useEffect(() => {
-    const imageListRef = ref(storage,storeRoute);
+      const imageListRef = ref(storage,storeRoute);
+        
+     
+      listAll(imageListRef)
+      
+        .then((response) => {
+        
+          response.items.forEach((item) => {
+            
+            getDownloadURL(item)
+            
+              .then((url) => {
+                setLoading(true);   
+                setImageList((prev) => [...prev, url]);
     
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          
-          setImageList((prev) => [...prev, url]);
-        });
-      });
-    })
-    .then(setImageList([])
-    );
-  }, [storeRoute]);
-  
+            });
+          });
+        
+        })
+        .then(setImageList([]))
+        .then(setLoading(false));
+    }, [storeRoute]);
+   
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
       <div className='flex justify-center'>
@@ -80,6 +93,10 @@ const AutViewImageComponent = () => {
         {imageList.map((url,index) => {
           return <ShowImage key={index} url={url}/>
         })}
+        <div 
+        className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>
+          <LoaderSpinner/>
+        </div>
       </div>
     
     </div>
@@ -87,3 +104,26 @@ const AutViewImageComponent = () => {
 }
 
 export default AutViewImageComponent
+
+/**
+ * useEffect(() => {
+      const fetchImageList = async () => {
+        const imageListRef = ref(storage, storeRoute);
+        
+        try {
+          const response = await listAll(imageListRef);
+          setLoading(true);
+          const urls = await Promise.all(response.items.map(async (item) => {
+            const url = await getDownloadURL(item);
+            return url;
+          }));
+          setImageList((prevs) => [...prevs, urls]);
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      fetchImageList();
+    }, [storeRoute]);
+ */
