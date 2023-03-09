@@ -6,7 +6,7 @@ import SelectBox from '../SelectBox'
 import ShowImage from '../ShowImage'
 
 import { storage } from '../../firebase';
-import { ref, listAll, getDownloadURL} from 'firebase/storage';
+import { ref, listAll, getDownloadURL, getMetadata} from 'firebase/storage';
 import LoaderSpinner from '../LoaderSpinner';
 import NotImageFound from '../NotImageFound';
 
@@ -16,7 +16,7 @@ import { transition1 } from '../../transitions';
 const AutViewImageComponent = () => {
   
   const [imageList, setImageList] = useState([]);
-  
+  const [dataFullPath, setDataFullPath] = useState([]);
   //Hooks for loaderSpinner Components
   const [loading, setLoading] = useState(false);
   
@@ -66,13 +66,26 @@ const AutViewImageComponent = () => {
         try {
           const response = await listAll(imageListRef);
          
+          //GET URL TO THE IMAGES
+          
           setLoading(true);
           const urls = await Promise.all(response.items.map(async (item) => {
             const url = await getDownloadURL(item);
             return url;
           }));
+
+          //GET METADATAS TO THE IMAGES
+          
+          const metaData = await Promise.all(response.items.map(async (item) => {
+            const data = await getMetadata(item);
+            return data.fullPath;
+          }));
+          
+          //SEND THE DATAS TO THE HOOKS
           setImageList(urls);
+          setDataFullPath(metaData);
           setLoading(false);
+        
         } catch (error) {
           console.log(error);
         }
