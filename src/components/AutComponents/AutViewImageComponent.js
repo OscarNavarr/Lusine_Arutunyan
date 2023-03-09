@@ -140,51 +140,29 @@ const AutViewImageComponent = () => {
 export default AutViewImageComponent
 
 /**
- * useEffect(() => {
-      const fetchImageList = async () => {
-        const imageListRef = ref(storage, storeRoute);
-        
-        try {
-          const response = await listAll(imageListRef);
-          setLoading(true);
-          const urls = await Promise.all(response.items.map(async (item) => {
-            const url = await getDownloadURL(item);
-            return url;
-          }));
-          setImageList((prevs) => [...prevs, urls]);
-          setLoading(false);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    
-      fetchImageList();
-    }, [storeRoute]);
+ * // GET IMAGES FROM FIRESTORE
+useEffect(() => {
+  const fetchImageList = async () => {
+    try {
+      const imageListRef = ref(storage, storeRoute);
+      const response = await listAll(imageListRef);
 
+      // GET URLS AND METADATA FOR ALL IMAGES IN PARALLEL
+      const [urls, metaData] = await Promise.all([
+        Promise.all(response.items.map((item) => getDownloadURL(item))),
+        Promise.all(response.items.map((item) => getMetadata(item).then(({ fullPath }) => fullPath))),
+      ]);
 
-    OLD METHOD
+      // UPDATE HOOKS WITH RETRIEVED DATA
+      setImageList(urls);
+      setDataFullPath(metaData);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    useEffect(() => {
-      const imageListRef = ref(storage,storeRoute);
-        
-     
-      listAll(imageListRef)
-      
-        .then((response) => {
-        
-          response.items.forEach((item) => {
-            
-            getDownloadURL(item)
-            
-              .then((url) => {
-                setLoading(true);   
-                setImageList((prev) => [...prev, url]);
-    
-            });
-          });
-        
-        })
-        .then(setImageList([]))
-        .then(setLoading(false));
-    }, [storeRoute]);
+  fetchImageList();
+}, [storeRoute]);
+
  */
