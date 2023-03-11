@@ -15,8 +15,12 @@ import { transition1 } from '../../transitions';
 
 const AutViewImageComponent = () => {
   
+  //HOOKS FOR THE IMAGES URL
   const [imageList, setImageList] = useState([]);
+  
+  //HOOKS FOR THE IMAGES METADATAS
   const [dataFullPath, setDataFullPath] = useState([]);
+
   //Hooks for loaderSpinner Components
   const [loading, setLoading] = useState(false);
   
@@ -60,40 +64,32 @@ const AutViewImageComponent = () => {
     
     //GET IMAGES FROM FIRESTORE
     useEffect(() => {
-      const fetchImageList = async () => {
-        const imageListRef = ref(storage, storeRoute);
-        
-        try {
-          const response = await listAll(imageListRef);
-         
-          //GET URL TO THE IMAGES
-          
-          setLoading(true);
-          const urls = await Promise.all(response.items.map(async (item) => {
-            const url = await getDownloadURL(item);
-            return url;
-          }));
+  const fetchImageList = async () => {
+    try {
+      const imageListRef = ref(storage, storeRoute);
+      const response = await listAll(imageListRef);
+      setLoading(true);
+      
+      // GET URLS AND METADATA FOR ALL IMAGES IN PARALLEL
+      const [urls, metaData] = await Promise.all([
+        Promise.all(response.items.map((item) => getDownloadURL(item))),
+        Promise.all(response.items.map((item) => getMetadata(item).then(({ fullPath }) => fullPath))),
+      ]);
 
-          //GET METADATAS TO THE IMAGES
-          
-          const metaData = await Promise.all(response.items.map(async (item) => {
-            const data = await getMetadata(item);
-            return data.fullPath;
-          }));
-          
-          //SEND THE DATAS TO THE HOOKS
-          setImageList(urls);
-          setDataFullPath(metaData);
-          setLoading(false);
-        
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    
-      fetchImageList();
-    }, [storeRoute]);
+      // UPDATE HOOKS WITH RETRIEVED DATA
+      setImageList(urls);
+      setDataFullPath(metaData);
+      setLoading(false);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchImageList();
+}, [storeRoute]);
    
+  
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
       <div className='flex justify-center'>
@@ -164,5 +160,42 @@ useEffect(() => {
 
   fetchImageList();
 }, [storeRoute]);
+
+//OLD METHODE
+
+useEffect(() => {
+      const fetchImageList = async () => {
+        const imageListRef = ref(storage, storeRoute);
+        
+        try {
+          const response = await listAll(imageListRef);
+         
+          //GET URL TO THE IMAGES
+          
+          setLoading(true);
+          const urls = await Promise.all(response.items.map(async (item) => {
+            const url = await getDownloadURL(item);
+            return url;
+          }));
+
+          //GET METADATAS TO THE IMAGES
+          
+          const metaData = await Promise.all(response.items.map(async (item) => {
+            const data = await getMetadata(item);
+            return data.fullPath;
+          }));
+          
+          //SEND THE DATAS TO THE HOOKS
+          setImageList(urls);
+          setDataFullPath(metaData);
+          setLoading(false);
+        
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      fetchImageList();
+    }, [storeRoute]);
 
  */
