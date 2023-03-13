@@ -80,15 +80,15 @@ const AutViewImageComponent = () => {
       setImageList(urls);
       setDataFullPath(metaData);
       setLoading(false);
-
     } catch (error) {
       console.log(error);
     }
   };
-
+  
   fetchImageList();
 }, [storeRoute]);
-   
+
+console.log(dataFullPath);
   
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
