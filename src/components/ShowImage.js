@@ -36,7 +36,7 @@ const ShowImage = ({url, dataFullPath}) => {
     } catch (error) {
 
       setImageDelete(false);
-      console.log('Error at:'+ error );
+      console.log('Error in:'+ error );
     
     }
 
