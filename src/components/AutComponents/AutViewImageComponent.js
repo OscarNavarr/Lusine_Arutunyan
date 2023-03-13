@@ -21,7 +21,7 @@ const AutViewImageComponent = () => {
   //HOOKS FOR THE IMAGES METADATAS
   const [dataFullPath, setDataFullPath] = useState([]);
 
-  //Hooks for loaderSpinner Components
+  //HOOK FOR LOADERSPINNER COMPONENT
   const [loading, setLoading] = useState(false);
   
   //HOOKS FOR SELECTBOX FIELD
@@ -87,8 +87,6 @@ const AutViewImageComponent = () => {
   
   fetchImageList();
 }, [storeRoute]);
-
-console.log(dataFullPath);
   
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
@@ -118,7 +116,7 @@ console.log(dataFullPath);
         imageList.length>0 && (
           <div className=' mt-[3rem] grid grid-cols-4 gap-4'>
             {imageList.map((url,index) => {
-              return <ShowImage key={index} url={url}/>
+              return <ShowImage key={index} url={url} dataFullPath={dataFullPath[index]}/>
             })}
             <div 
             className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>
