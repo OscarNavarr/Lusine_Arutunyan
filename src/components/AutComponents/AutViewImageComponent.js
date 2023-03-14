@@ -29,11 +29,14 @@ const AutViewImageComponent = () => {
   const [selectValue, setSelectValue] = useState();
   let storeRoute= "";
 
+  //HOOKS FOR UPDATE useEffect
+  const[imageDeleted, setImageDeleted] = useState("");
   
   //GET THE VALUE OF SELECTBOX
   const handleSelectBoxValue = (newValue) => {
     setSelectValue(newValue);
   }
+  
 
   switch (selectValue) {
     case "":
@@ -60,35 +63,40 @@ const AutViewImageComponent = () => {
     default:
       storeRoute="/"
       break;
-    }
+  }
   
-    
+  //FUNCTION FOR UPDATE useEffect WHEN DELETE IMAGE
+  const handleImagenDeleted = (imgRef) => {
+    setImageDeleted(imgRef);
+    storeRoute = selectValue + '/';
+  }  
     //GET IMAGES FROM FIRESTORE
     useEffect(() => {
-  const fetchImageList = async () => {
-    try {
-      const imageListRef = ref(storage, storeRoute);
-      const response = await listAll(imageListRef);
-      setLoading(true);
-      
-      // GET URLS AND METADATA FOR ALL IMAGES IN PARALLEL
-      const [urls, metaData] = await Promise.all([
-        Promise.all(response.items.map((item) => getDownloadURL(item))),
-        Promise.all(response.items.map((item) => getMetadata(item).then(({ fullPath }) => fullPath))),
-      ]);
+      const fetchImageList = async () => {
+        try {
+          const imageListRef = ref(storage, storeRoute);
+          const response = await listAll(imageListRef);
+          setLoading(true);
+          
+          // GET URLS AND METADATA FOR ALL IMAGES IN PARALLEL
+          const [urls, metaData] = await Promise.all([
+            Promise.all(response.items.map((item) => getDownloadURL(item))),
+            Promise.all(response.items.map((item) => getMetadata(item).then(({ fullPath }) => fullPath))),
+          ]);
 
-      // UPDATE HOOKS WITH RETRIEVED DATA
-      setImageList(urls);
-      setDataFullPath(metaData);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+          // UPDATE HOOKS WITH RETRIEVED DATA
+          setImageList(urls);
+          setDataFullPath(metaData);
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+        }
+      };
   
-  fetchImageList();
-}, [storeRoute]);
-  
+      fetchImageList();
+
+    }, [storeRoute]);
+
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
       <div className='flex justify-center'>
@@ -117,7 +125,12 @@ const AutViewImageComponent = () => {
         imageList.length>0 && (
           <div className=' mt-[3rem] grid grid-cols-4 gap-4'>
             {imageList.map((url,index) => {
-              return <ShowImage key={index} url={url} dataFullPath={dataFullPath[index]}/>
+              return <ShowImage 
+                        key={index} 
+                        url={url} 
+                        dataFullPath={dataFullPath[index]} 
+                        onImageDeleted={handleImagenDeleted}
+                      />
             })}
             <div 
             className={`${loading ? 'block' : 'hidden'} absolute bottom-[28%] left-[13%] lg:bottom-[35%] lg:left-[38%]`}>

@@ -1,7 +1,8 @@
-// TODO ENVIAR UNA VARIABLE AL COMPONENTE PADRE PARA INFORMARLE DE QUE SE BORRO UNA IMAGEN Y ACTUALICE EL useEffect
-// TODO MOSTRAR UN MENSAJE MODAL DE QUE SE BORRO CORRECTAMENTE LA IMAGEN O QUE OCURRIO UN ERROR
+// TODO: ENVIAR UNA VARIABLE AL COMPONENTE PADRE PARA INFORMARLE DE QUE SE BORRO UNA IMAGEN Y ACTUALICE EL useEffect
+// TODO: MOSTRAR UN MENSAJE MODAL DE QUE SE BORRO CORRECTAMENTE LA IMAGEN O QUE OCURRIO UN ERROR
 
 import React, { useState } from 'react'
+import { ReactDOM } from 'react';
 
 // IMPORT MOTION
 import { motion } from 'framer-motion'
@@ -16,7 +17,7 @@ import { storage } from '../firebase';
 // IMPORT LOADERSPINNER COMPONENT
 import LoaderSpinner from './LoaderSpinner';
 
-const ShowImage = ({url, dataFullPath}) => {
+const ShowImage = ({url, dataFullPath, onImageDeleted}) => {
   
   //REFERENCE TO FIRESTORE
   const desertRef = ref(storage, dataFullPath);
@@ -25,12 +26,12 @@ const ShowImage = ({url, dataFullPath}) => {
   const [loading, setLoading] = useState(false);
 
   const [imageDelete, setImageDelete] = useState(false);
-
+  
   const handleDeleteImages = async() => {
     
     try {
-
       setImageDelete(true);
+      onImageDeleted(dataFullPath);
       setLoading(true);
       
       await deleteObject(desertRef);
@@ -50,7 +51,7 @@ const ShowImage = ({url, dataFullPath}) => {
     animate={{ opacity: 1 }}
     transition={transition1}
       className='max-w-[16rem]'>
-        <div className={`${imageDelete ? 'hidden' : 'block'}`}>
+        <div className={`${imageDelete ? 'hidden' : 'block'}`} id={dataFullPath}>
 
           <img 
               src={url} 
