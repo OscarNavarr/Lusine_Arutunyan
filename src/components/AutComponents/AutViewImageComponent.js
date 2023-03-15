@@ -1,4 +1,4 @@
-// TODO: CREAR UNA FUNCION QUE RECIBA LA VARIABLE DEL COMPONENTE <ShowImage> Y HAGA ACTUALIZAR EL useEffect 
+// TODO: ESTE COMPONENTE TIENE UN ERROR EL useEffect no se actualiza correctamente cuando se actualiza una imagen
 // TODO: MOSTRAR TODAS LAS FOTOS CUANDO SE MUESTRE ESTE COMPONENTE AL INICIO 
 // TODO: ARREGLAR EL RESPONSIVE WEB DESING
 
@@ -7,7 +7,7 @@ import SelectBox from '../SelectBox'
 import ShowImage from '../ShowImage'
 
 import { storage } from '../../firebase';
-import { ref, listAll, getDownloadURL, getMetadata} from 'firebase/storage';
+import { ref, listAll, deleteObject, getDownloadURL, getMetadata} from 'firebase/storage';
 import LoaderSpinner from '../LoaderSpinner';
 import NotImageFound from '../NotImageFound';
 
@@ -27,7 +27,6 @@ const AutViewImageComponent = () => {
   
   //HOOKS FOR SELECTBOX FIELD
   const [selectValue, setSelectValue] = useState();
-  let storeRoute= "";
 
   //HOOKS FOR UPDATE useEffect
   const[imageDeleted, setImageDeleted] = useState("");
@@ -37,44 +36,12 @@ const AutViewImageComponent = () => {
     setSelectValue(newValue);
   }
   
-
-  switch (selectValue) {
-    case "":
-      storeRoute="/"
-      break;
-    case 'Professionals':
-      storeRoute='Professionals/'
-      break;
-    case 'Familiar':
-      storeRoute='Familiar/'
-      break;
-    case 'Weddings':
-      storeRoute='Weddings/'
-      break;
-    case 'Birthday':
-      storeRoute='Birthday/'
-      break;
-    case 'Fashion':
-      storeRoute='Fashion/'
-      break;
-    case 'Pregnancy':
-      storeRoute='Pregnancy/'
-      break;  
-    default:
-      storeRoute="/"
-      break;
-  }
   
-  //FUNCTION FOR UPDATE useEffect WHEN DELETE IMAGE
-  const handleImagenDeleted = (imgRef) => {
-    setImageDeleted(imgRef);
-    storeRoute = selectValue + '/';
-  }  
     //GET IMAGES FROM FIRESTORE
     useEffect(() => {
       const fetchImageList = async () => {
         try {
-          const imageListRef = ref(storage, storeRoute);
+          const imageListRef = ref(storage, selectValue+'/');
           const response = await listAll(imageListRef);
           setLoading(true);
           
@@ -90,13 +57,30 @@ const AutViewImageComponent = () => {
           setLoading(false);
         } catch (error) {
           console.log(error);
+          setSelectValue(selectValue+'/');
         }
       };
   
       fetchImageList();
 
-    }, [storeRoute]);
+    }, [selectValue, imageDeleted]);
 
+
+    //FUNCTION FOR DELETE IMAGE
+    const handleImagenDeleted = async(imgRef) => {
+      
+      try {
+        const desertRef = ref(storage, imgRef);
+        
+        setImageDeleted(imgRef);
+        await deleteObject(desertRef);
+        console.log('Image has bee deleted');
+      } catch (error) {
+      
+        console.log(error)
+       
+      }
+    }  
   return (
     <div className='w-[70%] mx-auto mt-[3rem]'>
       <div className='flex justify-center'>
@@ -148,7 +132,7 @@ const AutViewImageComponent = () => {
 export default AutViewImageComponent
 
 /**
- * // GET IMAGES FROM FIRESTORE
+ * GET IMAGES FROM FIRESTORE
 useEffect(() => {
   const fetchImageList = async () => {
     try {

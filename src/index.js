@@ -10,8 +10,6 @@ import CursorProvider from './context/CursorContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <CursorProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </CursorProvider>
 );
