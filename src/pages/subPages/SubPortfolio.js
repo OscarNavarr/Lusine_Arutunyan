@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Gallery from './Gallery';
 import { motion } from 'framer-motion';
 
@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../../transitions';
 // import context
 import { CursorContext } from '../../context/CursorContext';
-import { CloudinaryContext } from 'cloudinary-react';
-import {Image, Video, Transformation} from 'cloudinary-react';
 
 const images = [
   "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img6_qkq6bt.jpg",
@@ -21,21 +19,29 @@ const images = [
 ]
 const SubPortfolio = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  
+  const [ openModal, setOpenModal ] = useState(false);
+  
+  const handleModalOpen = (valueBool) => {
+      setOpenModal(valueBool);
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0, y: '100%' }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className=''
+      className={`${openModal && 'section overflow-hidden'}`}
     >
       <div className='container mx-auto'>
         <div className=' pt-24 lg:pt-36 pb-8'>
         
-        <div className='flex items-center justify-center lg:flex-row ' >
-          <h2 className='text-2xl font-semibold'>What kind of image do you want to see?</h2>
+        <div className={`px-4 md:flex md:items-center md:justify-center lg:flex-row ${openModal && 'blur-lg'}`}  >
+            
+            <h2 className='text-xl  md:text-2xl font-semibold'>What kind of image do you want to see?</h2>
           
-            <select className='w-[10rem] h-[2rem] border-b-2 border-current ml-[3rem]'>
+            <select className='w-[10rem] h-[2rem] border-b-2 border-current mt-5 md:ml-[3rem]'>
               <option value="Professionals" className='p-4 mb-3'>Professionals</option>
               <option value="Familiar" className='p-4 mb-3'>Familiar</option>
               <option value="Weddings" className='p-4 mb-3'>Weddings</option>
@@ -43,15 +49,15 @@ const SubPortfolio = () => {
               <option value="Fashion" className='p-4 mb-3'>Fashion</option>
               <option value="Pregnancy" className='p-4 mb-3'>Pregnancy</option>
             </select>
-          </div>
+        </div>
           {/*
             *
             *   GALLERY SECTION
-            *w
+            *
             *
           */}
           <div className=' mt-[4rem]'>
-            <Gallery images={images} className='overflow-hidden'/> 
+            <Gallery images={images} modalOpen={handleModalOpen} className='overflow-hidden'/> 
           </div>
         </div>
       </div>
