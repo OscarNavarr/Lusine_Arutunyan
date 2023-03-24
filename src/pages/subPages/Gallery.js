@@ -1,13 +1,8 @@
-/**
+/** 
+ * TODO
  * 
- * HACER QUE LA VISTA DETALLADA DE LA FOTO SE MUESTRE POR ENSIMA DE TODO 
- * HACER QUE EL SCROOL NO SE MUESTRE EN LA VISTA DETALLA
- * FALTA HACER ESTE PAGINA RESPONSIVA 
  * 
- * TAREA PARA HOY
- * SUBIR LAS FOTOS A CLOUDINARY
- * MOSTRAR LAS FOTOS DE CLOUDINARY EN ESTA PAGINA
- * HACER FUNCIONAL EL SELECT BOX PARA QUE MUESTRE LAS IMAGENES SEGÚN SE SELECCIONE SU TIPO
+ * 
  */
 
 import React, {useState} from 'react';
@@ -57,13 +52,15 @@ const Gallery = ( props) =>{
             }}
             >
                 <button onClick={() => imgAction('quite')}
-                        style={{position:'absolute', 
-                                top: '2rem', 
-                                right: '1.5rem',
-                                color:'white',
-                                fontSize:'2rem',
-                                zIndex: 201
-                }}>X</button>
+                        className='
+                            absolute
+                            top-[2rem]
+                            right-[1.5rem]
+                            text-white
+                            text-[2rem]
+                            z-[201]           
+                            
+                '>X</button>
                 <button onClick={() => imgAction('previous-img')}
                        className='
                         bg-white 
@@ -73,11 +70,14 @@ const Gallery = ( props) =>{
                         text-[2rem] 
                         z-[201] 
                         absolute 
-                        bottom-[15%] lg:bottom-[50%]
+                        bottom-[15%] md:bottom-[5%] lg:bottom-[50%]
                         left-[30%] lg:left-[25%]     
                 '>{'<'}</button>
                 
-                <img src={data.img} style={{width: 'auto', maxWidth: '90%', maxHeight: '90%'}} alt="modal images"/>
+                <img 
+                    src={data.img} 
+                    className='w-auto max-w-[90%] max-h-[90%]'
+                    alt="modal images"/>
                 
                 <button onClick={() => imgAction('next-img')}
                         className='
@@ -88,7 +88,7 @@ const Gallery = ( props) =>{
                             text-[2rem] 
                             z-[201] 
                             absolute 
-                            bottom-[15%] lg:bottom-[50%] 
+                            bottom-[15%] md:bottom-[5%] lg:bottom-[50%] 
                             right-[30%] lg:right-[25%]
                 '>{'>'}</button>
             </div>

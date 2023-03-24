@@ -1,12 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Gallery from './Gallery';
 import { motion } from 'framer-motion';
 
 
 // import transition
 import { transition1 } from '../../transitions';
-// import context
-import { CursorContext } from '../../context/CursorContext';
 
 const images = [
   "https://res.cloudinary.com/duchgijkt/image/upload/v1671709517/photos/img6_qkq6bt.jpg",
@@ -18,7 +16,6 @@ const images = [
   "https://res.cloudinary.com/duchgijkt/image/upload/v1671703806/photos/img2_xbcevn.jpg",
 ]
 const SubPortfolio = () => {
-  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   
   const [ openModal, setOpenModal ] = useState(false);
   
