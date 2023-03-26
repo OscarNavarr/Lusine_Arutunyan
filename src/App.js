@@ -23,33 +23,33 @@ const App = () => {
   return (
     <>
      
-      <Router>
-        <AnimRoutes />
+     <UserAuthContextProvider>
+        <Router>
+          <AnimRoutes />
 
-        {/**
-         * Auth Routes
-         */}
-        <UserAuthContextProvider>
-          <Routes>
-            <Route path='/login' element={<Login />} />
-            
-            <Route path='/dashboard' element={
+          {/**
+           * Auth Routes
+           */}
+            <Routes>
+              <Route path='/login' element={<Login />} />
+              
+              <Route path='/dashboard' element={
+                <ProtectedRoute>
+                  <AuthDashboard/>
+                </ProtectedRoute>
+              }>
+                <Route path='images' element={<AutViewImageComponent/>}/>
+                <Route path='publications' element={<AuthPublicationsComponent/>}/>
+                <Route path='profile' element={<AuthProfilComponent/>}/>
+              </Route>
+              <Route path='/verification' element={
               <ProtectedRoute>
-                <AuthDashboard/>
+                <UserVerification/>
               </ProtectedRoute>
-            }>
-              <Route path='images' element={<AutViewImageComponent/>}/>
-              <Route path='publications' element={<AuthPublicationsComponent/>}/>
-              <Route path='profile' element={<AuthProfilComponent/>}/>
-            </Route>
-            <Route path='/verification' element={
-            <ProtectedRoute>
-              <UserVerification/>
-            </ProtectedRoute>
-            }/>
-          </Routes>
-        </UserAuthContextProvider>
-      </Router>
+              }/>
+            </Routes>
+        </Router>
+      </UserAuthContextProvider>
       {/* cursor */}
       <motion.div
         variants={cursorVariants}

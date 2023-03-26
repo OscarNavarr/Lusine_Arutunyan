@@ -20,11 +20,11 @@ const Gallery = ( props) =>{
         const imgAction = (action) =>{
             let i = data.i;
             if(action === 'next-img'){
-                setData({img: props.images[i + 1], i: i + 1});
-                if (i+1 === props.images.length){ props.modalOpen(false)}
+                setData({img: props.urls[i + 1], i: i + 1});
+                if (i+1 === props.urls.length){ props.modalOpen(false)}
             }
             if(action === 'previous-img'){
-                setData({img: props.images[i - 1], i: i - 1})
+                setData({img: props.urls[i - 1], i: i - 1})
                 if (i-1 < 0 ){ props.modalOpen(false)}
             }
             if(action === 'quite'){
@@ -97,7 +97,7 @@ const Gallery = ( props) =>{
 
             <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
                 <Masonry gutter='20px' className=''>
-                    {props.images.map((image, i) => (
+                    {props.urls.map((image, i) => (
                         <img
                             key={i}
                             src={image}
