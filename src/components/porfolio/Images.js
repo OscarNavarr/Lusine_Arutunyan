@@ -18,7 +18,7 @@ const Images = () => {
         <div className='hidden lg:grid grid-cols-2 lg:gap-2 lg:w-[27rem] special:w-[35rem] lg:mr-[6rem]'>
             {/* image */}
             {images.map((img,i) => (
-                <div className='max-w-[250px] lg:max-w-[320px] h-[187px] lg:h-[220px] bg-accent overflow-hidden'>
+                <div key={i} className='max-w-[250px] lg:max-w-[320px] h-[187px] lg:h-[220px] bg-accent overflow-hidden'>
                     <img
                     key={i}
                     src={img}

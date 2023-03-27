@@ -10,10 +10,16 @@ import { transition1 } from '../transitions';
 // cursor context
 import { CursorContext } from '../context/CursorContext';
 import Header from '../components/Header';
+import About from './About';
+import Portfolio from './Portfolio';
+import Pricing from './Pricing';
+import Contact from './Contact';
 
 const Home = () => {
-  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
+    <>
+   
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -31,30 +37,32 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-50%' }}
             transition={transition1}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
             className='
-              order-2 
-              lg:order-1 
-              w-full 
-              lg:mt-[15rem] xl:mt-[20rem] sxl:mt-[23rem] speciallaptop2:mt-[15rem]
-              xl:ml-[15rem] speciallaptop:ml-[6rem] speciallaptop2:ml-[15rem] special:ml-[15rem] sxl:ml-[34.9rem] 
-              pb-14 lg:pb-0 lg:w-[40rem] xl:w-[35rem]
-              speciallaptop:w-[30rem] special:w-[30rem] sxl:w-[47rem] 
-              z-10 
-              flex flex-col 
-              justify-center
-              items-center lg:items-start'
-          >
+            order-2 
+            lg:order-1 
+            w-full 
+            lg:mt-[15rem] xl:mt-[20rem] sxl:mt-[23rem] speciallaptop2:mt-[15rem]
+            xl:ml-[15rem] speciallaptop:ml-[6rem] speciallaptop2:ml-[15rem] special:ml-[15rem] sxl:ml-[34.9rem] 
+            pb-14 lg:pb-0 lg:w-[40rem] xl:w-[35rem]
+            speciallaptop:w-[30rem] special:w-[30rem] sxl:w-[47rem] 
+            z-10 
+            flex flex-col 
+            justify-center
+            items-center lg:items-start'
+            >
+            {/*
+              ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}*/}
             <h1 className='h1 lg:text-[5rem] sxl:text-[8rem] '>
               photographer <br /> & film maker
             </h1>
             <p className='text-[26px] lg:text-[36px] sxl:text-[50px] font-primary mb-4 lg:mb-12 '>
               Marseille-Paris, France
             </p>
-            <Link to={'/about'} className='btn mb-[5px] '>
+            <div className='btn mb-[5px] '>
              Continue
-            </Link>
+            </div>
           </motion.div>
           {/* image */}
           <div className='
@@ -87,6 +95,11 @@ const Home = () => {
         </div>
       </div>
     </motion.section>
+    <About/>
+    <Portfolio/>
+    <Pricing/>
+    <Contact/>
+    </>
   );
 };
 

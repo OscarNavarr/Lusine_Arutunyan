@@ -57,7 +57,7 @@ const ImgSlider = (props) => {
         <Slider {...settings}>
           
             {props.images.map((image, i) => (
-                <div  className='h-[15rem]'>
+                <div key={i}  className='h-[15rem]'>
                     <img
                         key={i}
                         src={image}

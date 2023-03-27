@@ -7,10 +7,9 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // import context
 import { CursorContext } from '../context/CursorContext';
-import Header from '../components/Header';
 
 const Contact = () => {
-  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+  //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 
   return (
     <motion.section
@@ -20,16 +19,17 @@ const Contact = () => {
       transition={transition1}
       className='section bg-white'
     >
-      <Header className='z-[30]' />
       <div className='mx-auto h-full'>
         <div className=' flex flex-col lg:flex-row h-full items-center justify-start pt-[24rem] gap-x-8 text-center lg:text-left'>
           
           {/* text & form */}
           <div
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
             className='lg:flex-1 lg:pt-32 px-[20rem] bg-[#eef7f9]'
           >
+            {/*
+              ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL div
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}*/}
             <h1 className='h1'>Contact me</h1>
             <p className='mb-12'>I would love to get suggestions from you.</p>
             {/* form */}

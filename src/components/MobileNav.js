@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { CgMenuRight } from 'react-icons/cg';
 // import link
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 // import motion
 import { motion } from 'framer-motion';
 
@@ -48,19 +48,19 @@ const MobileNav = () => {
         {/* menu list */}
         <ul className='h-full flex flex-col justify-center items-center gap-y-8 text-primary font-primary  font-bold text-3xl'>
           <li>
-            <Link to='/'>Home</Link>
+            <a href='#home'>Home</a>
           </li>
           <li>
-            <Link to='/about'>About</Link>
+            <a href='#about'>About</a>
           </li>
           <li>
-            <Link to='/portfolio'>Portfolio</Link>
+            <a href='#portfolio'>Portfolio</a>
           </li>
           <li>
-            <Link to='/pricing'>Pricing</Link>
+            <a href='#pricing'>Pricing</a>
           </li>
           <li>
-            <Link to='/contact'>Contact</Link>
+            <a href='#contact'>Contact</a>
           </li>
           
         </ul>
