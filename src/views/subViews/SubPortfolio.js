@@ -7,6 +7,8 @@ import { ref, listAll, deleteObject, getDownloadURL, getMetadata} from 'firebase
 import LoaderSpinner from '../../components/LoaderSpinner'
 // import transition
 import { transition1 } from '../../transitions';
+import Header from '../../components/Header';
+import NavBarSubPorfolio from './NavBarSubPorfolio';
 
 
 const SubPortfolio = () => {
@@ -61,13 +63,18 @@ const SubPortfolio = () => {
 
   return (
     <>
+        
         <motion.section
           initial={{ opacity: 0, y: '100%' }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: '100%' }}
           transition={transition1}
-          className={`${openModal && 'section overflow-hidden'}`}
-        >
+          className={`${openModal && 'section overflow-hidden'} overflow-x-hidden z-30`}
+          >
+            <div className={`${openModal && 'blur-lg'}`}>
+
+              <NavBarSubPorfolio/>
+            </div>
           <div className='container mx-auto'>
             <div className='relative pt-24 lg:pt-36 pb-8'>
             
@@ -75,7 +82,7 @@ const SubPortfolio = () => {
                   
                   <h2 className='text-xl mb-8 md:mb-0  md:text-2xl lg:mr-9 font-semibold'>What kind of image do you want to see?</h2>
                 
-                  <SelectBox onValueChange={handleSelectBoxValue}/>
+                  <SelectBox onValueChange={handleSelectBoxValue} className={`${openModal && 'blur-lg'}`}/>
               </div>
                 {/*
                   *
@@ -83,8 +90,8 @@ const SubPortfolio = () => {
                   *
                   *
                 */}
-                <div className=' mt-[4rem]'>
-                  <Gallery urls={imageList} modalOpen={handleModalOpen} className='overflow-hidden'/> 
+                <div className='mt-[4rem]' >
+                  <Gallery urls={imageList} modalOpen={handleModalOpen} className='overflow-hidden z-40'/> 
                 </div>
                 
             </div>

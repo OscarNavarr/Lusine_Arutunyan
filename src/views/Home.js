@@ -9,11 +9,6 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // cursor context
 import { CursorContext } from '../context/CursorContext';
-import Header from '../components/Header';
-import About from './About';
-import Portfolio from './Portfolio';
-import Pricing from './Pricing';
-import Contact from './Contact';
 
 const Home = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -25,9 +20,8 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={transition1}
-      className='section overflow-hidden'
+      className='section'
     >
-      <Header className='z-[30]' />
       <div className='container mx-auto h-full '>
         {/* text & img wrapper */}
         <div className='flex flex-col justify-center lg:relative'>
@@ -95,10 +89,6 @@ const Home = () => {
         </div>
       </div>
     </motion.section>
-    <About/>
-    <Portfolio/>
-    <Pricing/>
-    <Contact/>
     </>
   );
 };

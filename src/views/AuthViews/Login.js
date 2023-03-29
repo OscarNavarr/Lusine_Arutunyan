@@ -60,7 +60,7 @@ const Login = () => {
             <form className='mt-9' onSubmit={handleSubmit}>
                 <input 
                   type='text' 
-                  className='w-[20rem] h-[3rem] border-b-2 border-current mb-3'  
+                  className='outline-none w-[20rem] h-[3rem] border-b-2 border-current mb-3'  
                   placeholder='email'
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -68,7 +68,7 @@ const Login = () => {
                 <div className='flex'>
                   <input 
                     type={Type}  
-                    className='w-[20rem] h-[3rem] border-b-2 border-current' 
+                    className='outline-none w-[20rem] h-[3rem] border-b-2 border-current' 
                     placeholder='password'
                     onChange={(e) => setPassword(e.target.value)}
                   />

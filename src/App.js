@@ -5,15 +5,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 // import Authorized Pages
-import Login from './pages/AuthPages/Login';
-import {AuthDashboard} from './pages/AuthPages';
+import Login from './views/AuthViews/Login';
+import {AuthDashboard} from './views/AuthViews';
 
 // import Authorized Components
 import { AutViewImageComponent, AuthProfilComponent, AuthPublicationsComponent } from './components/AutComponents';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import ProtectedRoute from './components/AutComponents/ProtectedRoute';
-import UserVerification from './pages/AuthPages/UserVerification';
-import Home from './pages/Home';
+import UserVerification from './views/AuthViews/UserVerification';
+import MainPage from './pages/MainPage';
+import { SubPortfolio } from './views';
 
 
 
@@ -28,9 +29,10 @@ const App = () => {
            * Auth Routes
            */}
             <Routes >
-              <Route path='/' element={<Home/>}/>
+              <Route path='/' element={<MainPage/>}/>
 
               <Route path='/login' element={<Login/>} />
+              <Route path='/porfolio' element={<SubPortfolio/>} />
               
               <Route path='/dashboard' element={
                 <ProtectedRoute>
