@@ -33,9 +33,10 @@ const About = () => {
           transition={transition1}
           className='
             flex-1 lg:flex-none 
-            lg:ml-[15%] sxl:ml-[35rem] 
-            sxl:w-[45rem] o
-            rder-2 lg:order-none 
+            lg:ml-[9.5rem] sxl:ml-[35rem] 
+            lg:mr-[7rem]
+            sxl:w-[45rem] 
+            order-2 lg:order-none 
             overflow-hidden
           '>
             
@@ -54,7 +55,7 @@ const About = () => {
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}*/}
-            <h1 className='h1 hidden lg:block lg:text-[3rem] xl:text-[5rem] sxl:text-[7rem] lg:pt-[9rem] xl:pt-2 sxl:pt-0'>About me</h1>
+            <h1 className='h1 hidden lg:block lg:text-[3rem] xl:text-[5rem] sxl:text-[7rem] lg:mt-[3rem] xl:pt-2 sxl:pt-0'>About me</h1>
             <p className='lg:text-[15.2px] sxl:text-[1.5rem] text-justify my-3 max-w-sm lg:max-w-[23rem] xl:max-w-sm sxl:max-w-[40rem]'>
               My name is<b> Lusine Arutunyan.</b> and I'm a photographer. 
               One of the most important things I can do for yo is to awaken in you a smile and a love for photography.
