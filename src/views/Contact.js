@@ -18,7 +18,7 @@ const Contact = () => {
           
           {/* text & form */}
           <div
-            className='lg:px-[22rem] lg:flex-1 lg:pt-32 bg-[#eef7f9]'
+            className='lg:px-[22rem] lg:flex-1 lg:pt-32 bg-[#eef7f9] w-full'
           >
             {/*
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL div
