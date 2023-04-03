@@ -14,9 +14,10 @@ const Pricing = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: '100%' }}
         transition={transition1}
+        className='mt-[7rem]'
         >
             <div className='container mx-auto h-full relative'>
-               <h1 className='h1 text-center lg:text-center lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>Our services</h1>
+               <h1 className='h1 text-center lg:text-center lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>My services</h1>
                <div className='flex justify-center'>
                     <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-11 text-center lg:text-left lg:pt-16 pb-[8rem]'>
                         {/*CARD ONE */}
