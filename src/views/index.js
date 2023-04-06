@@ -4,6 +4,7 @@ import Portfolio from "./Portfolio";
 import Pricing from "./Pricing";
 import StepToMyServices from "./StepToMyServices";
 import Contact from "./Contact";
+import Services from "./Services";
 
 //AuthViews
 import { AuthDashboard, Login, UserVerification } from "./AuthViews";
@@ -16,6 +17,7 @@ export {
     Home,
     About,
     Portfolio,
+    Services,
     Pricing,
     StepToMyServices,
     Contact, 
