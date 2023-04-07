@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import { About, Contact, Home, Portfolio, Pricing, Services, StepToMyServices } from '../views'
+import { About, Contact, Home, Opinions, Portfolio, Pricing, StepToMyServices } from '../views'
 
 const MainPage = () => {
   return (
@@ -8,10 +8,10 @@ const MainPage = () => {
         <Header/>
         <Home/>
         <About/>
-        <Services/>
         <Pricing/>
         <Portfolio/>
         <StepToMyServices/>
+        <Opinions/>
         <Contact/>
     </>
   )

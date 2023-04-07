@@ -5,6 +5,7 @@ import Pricing from "./Pricing";
 import StepToMyServices from "./StepToMyServices";
 import Contact from "./Contact";
 import Services from "./Services";
+import Opinions from "./Opinions";
 
 //AuthViews
 import { AuthDashboard, Login, UserVerification } from "./AuthViews";
@@ -26,5 +27,6 @@ export {
     UserVerification,
     Gallery,
     SubAbout,
-    SubPortfolio
+    SubPortfolio,
+    Opinions,
 }
