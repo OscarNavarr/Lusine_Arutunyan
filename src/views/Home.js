@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 // import images
 import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
 // import link
@@ -9,9 +9,30 @@ import { motion } from 'framer-motion';
 import { transition1 } from '../transitions';
 // cursor context
 import { CursorContext } from '../context/CursorContext';
+// import Icons
+import { AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
+
+import {img1, img2, img3, img4} from '../img/portfolio/index';
 
 const Home = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+
+  const images =[WomanImg,img1, img2, img3, img4];
+  const [index, setIndex] = useState(0);
+
+  
+  const imgAction = (action) =>{
+   
+    if(action === 'next-img'){
+        setIndex(index + 1);
+        if (index + 1 === images.length){  setIndex(0)}
+    }
+    if(action === 'previous-img'){
+        setIndex(index - 1)
+        if (index - 1 < 0 ){ setIndex(images.length -1 )}
+    }
+}
+
   return (
     <>
    
@@ -71,6 +92,7 @@ const Home = () => {
             </motion.div>
           </motion.div>
           {/* image */}
+          
           <div className='
             lg:relative 
             lg:left-[31rem] xl:left-[40rem] special:left-[40rem] sxl:left-[75rem] 
@@ -80,23 +102,37 @@ const Home = () => {
             lg:max-h-max 
             order-1 lg:order-2 
             pt-36 lg:pt-0 
-            lg:w-[30rem] special:w-[40rem] sxl:w-[55rem] 
-            reflex-img' 
+            lg:w-[30rem] special:w-[40rem] sxl:w-[55rem]'
           >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] special:w-[40rem] sxl:w-[55rem] lg:h-full rounded-full lg:rounded-none'
+              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
-                src={WomanImg}
+                src={images[index]}
                 alt='presentation images'
               />
             </motion.div>
+            
+            <div className='flex z-[6] absolute bottom-[-6rem] right-[14rem]'>
+              <button
+               onClick={() => imgAction('previous-img')}
+               className='lg:h-[4rem] lg:w-[4rem] px-4 bg-black'>
+                <AiOutlineLeft className='text-white w-[2rem] h-[2rem]'/>
+              </button>
+
+              <button 
+                onClick={() => imgAction('next-img')}
+                className='lg:h-[4rem] lg:w-[4rem] ml-5 px-4 bg-black'>
+                <AiOutlineRight className='text-white w-[2rem] h-[2rem]'/>
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
