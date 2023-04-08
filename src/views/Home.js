@@ -27,7 +27,7 @@ const Home = () => {
         <div className='flex flex-col justify-center lg:relative'>
           {/* text */}
           <motion.div
-            initial={{ opacity: 0, y: '-50%' }}
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-50%' }}
             transition={transition1}
@@ -48,20 +48,31 @@ const Home = () => {
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}*/}
-            <h1 className='h1 lg:text-[5rem] sxl:text-[8rem] '>
+            <motion.h1 
+              initial={{y:'100%',opacity:0}}
+              animate={{y:'0%',opacity:1}}
+              transition={{duration:1,delay:0.3}}
+              className='h1 lg:text-[5rem] sxl:text-[8rem] '>
               photographer <br /> & film maker
-            </h1>
-            <p className='text-[26px] lg:text-[36px] sxl:text-[50px] font-primary mb-4 lg:mb-12 '>
+            </motion.h1>
+            <motion.p 
+              initial={{y:'100%',opacity:0}}
+              animate={{y:'0%',opacity:1}}
+              transition={{duration:1,delay:0.5}}
+              className='text-[26px] lg:text-[36px] sxl:text-[50px] font-primary mb-4 lg:mb-12 '>
               Marseille-Paris, France
-            </p>
-            <div className='btn mb-[5px] '>
+            </motion.p>
+            <motion.div 
+              initial={{y:'100%',opacity:0}}
+              animate={{y:'0%',opacity:1}}
+              transition={{duration:1,delay:0.6}}
+              className='btn mb-[5px] '>
              Continue
-            </div>
+            </motion.div>
           </motion.div>
           {/* image */}
           <div className='
             lg:relative 
-
             lg:left-[31rem] xl:left-[40rem] special:left-[40rem] sxl:left-[75rem] 
             lg:bottom-[29rem] xl:bottom-[35rem] speciallaptop2:bottom-[29rem] sxl:bottom-[43rem]  
             flex 
@@ -70,7 +81,7 @@ const Home = () => {
             order-1 lg:order-2 
             pt-36 lg:pt-0 
             lg:w-[30rem] special:w-[40rem] sxl:w-[55rem] 
-            lg:bg-black' 
+            reflex-img' 
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -83,6 +94,7 @@ const Home = () => {
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
                 src={WomanImg}
+                alt='presentation images'
               />
             </motion.div>
           </div>

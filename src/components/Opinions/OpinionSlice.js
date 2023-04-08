@@ -14,7 +14,7 @@ const OpinionSlice = () => {
         speed: 9000,
         autoplaySpeed: 9000,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         responsive: [
             {
               breakpoint: 1024,
