@@ -1,6 +1,15 @@
-import React, { useState, useContext } from 'react';
-// import images
-import WomanImg from '../img/home/Lusine_Arutunyan.jpg';
+/**
+ * 
+ * A ESTE COMPONENTE SE LE PUEDE CAMBIAR EL TEXTO A TRAVES DEL COMPONENTE "texts" PARA CAMBIAR EL TEXTO
+ * SOLO DEBO ESCRIBIR EL SIGUIENTE COMANDO "texts[index].title" O "texts[index].subtitle" 
+ * 
+ * TODO: DEBO PONER FOTOS CON FONDOS CLAROS 
+ * 
+ */
+
+
+
+import React, { useState, useContext, useEffect } from 'react';
 // import link
 import { Link } from 'react-router-dom';
 // import motion
@@ -12,30 +21,39 @@ import { CursorContext } from '../context/CursorContext';
 // import Icons
 import { AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
 
-import {img1, img2, img3, img4} from '../img/portfolio/index';
-
 import texts from '../texts/homeText';
-import { text } from '@cloudinary/url-gen/qualifiers/source';
 
 const Home = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 
-  const images =[WomanImg,img1, img2, img3, img4];
   const [index, setIndex] = useState(0);
 
-  //Este codigo muestra cada elemento del archivo json
-  const {title, subtitle} = texts.first[0];
-  const sizeTexts = Object.keys(texts).length //Esto devuelve un size de 5
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+        if(index === texts.length - 1){
+          setIndex(0)
+        }else{
+          setIndex(index + 1)
+        }
+    }, 5000);
+  
+    return () => {
+      clearInterval(interval);
+    }
+  }, [index, texts.length]);
+  
 
   const imgAction = (action) =>{
    
     if(action === 'next-img'){
         setIndex(index + 1);
-        if (index + 1 === sizeTexts){  setIndex(0)}
+        if (index + 1 === texts.length){  setIndex(0)}
     }
     if(action === 'previous-img'){
         setIndex(index - 1)
-        if (index - 1 < 0 ){ setIndex(sizeTexts -1 )}
+        if (index - 1 < 0 ){ setIndex(texts.length -1 )}
     }
 }
 
@@ -79,7 +97,7 @@ const Home = () => {
               initial={{y:'100%',opacity:0}}
               animate={{y:'0%',opacity:1}}
               transition={{duration:1,delay:0.3}}
-              className='h1 lg:text-[5rem] sxl:text-[8rem] '>
+              className='h1 lg:text-[5rem] sxl:text-[8rem]'>
               photographer <br /> & film maker
             </motion.h1>
             <motion.p 
@@ -120,7 +138,8 @@ const Home = () => {
               <motion.img
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
-                src={images[index]}
+                exit={{opacity:0}}
+                src={texts[index].images}
                 alt='presentation images'
               />
             </motion.div>
