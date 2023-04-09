@@ -14,22 +14,28 @@ import { AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
 
 import {img1, img2, img3, img4} from '../img/portfolio/index';
 
+import texts from '../texts/homeText';
+import { text } from '@cloudinary/url-gen/qualifiers/source';
+
 const Home = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 
   const images =[WomanImg,img1, img2, img3, img4];
   const [index, setIndex] = useState(0);
 
-  
+  //Este codigo muestra cada elemento del archivo json
+  const {title, subtitle} = texts.first[0];
+  const sizeTexts = Object.keys(texts).length //Esto devuelve un size de 5
+
   const imgAction = (action) =>{
    
     if(action === 'next-img'){
         setIndex(index + 1);
-        if (index + 1 === images.length){  setIndex(0)}
+        if (index + 1 === sizeTexts){  setIndex(0)}
     }
     if(action === 'previous-img'){
         setIndex(index - 1)
-        if (index - 1 < 0 ){ setIndex(images.length -1 )}
+        if (index - 1 < 0 ){ setIndex(sizeTexts -1 )}
     }
 }
 
