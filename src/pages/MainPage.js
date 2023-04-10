@@ -7,9 +7,9 @@ const MainPage = () => {
     <>
         <Header/>
         <Home/>
+        <Portfolio/>
         <About/>
         <Pricing/>
-        <Portfolio/>
         <StepToMyServices/>
         <Opinions/>
         <Contact/>

@@ -133,7 +133,7 @@ const Home = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='overflow-hidden w-[15rem] h-[15rem] lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none'
+              className='overflow-hidden w-[20rem] h-[20rem] lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}
@@ -144,17 +144,17 @@ const Home = () => {
               />
             </motion.div>
             
-            <div className='flex z-[6] absolute bottom-[-6rem] right-[14rem]'>
+            <div className='flex z-[6] absolute bottom-[32rem] lg:bottom-[-6rem] lg:right-[14rem]'>
               <button
                onClick={() => imgAction('previous-img')}
-               className='lg:h-[4rem] lg:w-[4rem] px-4 bg-black'>
-                <AiOutlineLeft className='text-white w-[2rem] h-[2rem]'/>
+               className='rounded-full lg:rounded-none mr-[14rem] lg:mr-0 outline-none  lg:h-[4rem] lg:w-[4rem] lg:px-4 bg-white lg:bg-black '>
+                <AiOutlineLeft className='text-black lg:text-white w-[2rem] h-[2rem]'/>
               </button>
 
               <button 
                 onClick={() => imgAction('next-img')}
-                className='lg:h-[4rem] lg:w-[4rem] ml-5 px-4 bg-black'>
-                <AiOutlineRight className='text-white w-[2rem] h-[2rem]'/>
+                className='rounded-full lg:rounded-none outline-none lg:h-[4rem] lg:w-[4rem] ml-5 lg:px-4  bg-white lg:bg-black'>
+                <AiOutlineRight className='text-black lg:text-white w-[2rem] h-[2rem]'/>
               </button>
             </div>
 

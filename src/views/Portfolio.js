@@ -9,6 +9,7 @@ import { transition1 } from '../transitions';
 import { CursorContext } from '../context/CursorContext';
 //import ImagesSlider
 import Images from '../components/porfolio/Images';
+import SelectBox from '../components/SelectBox';
 
 const Portfolio = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -18,51 +19,70 @@ const Portfolio = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className='overflow-hidden Overflow-y-visible sm_special:overflow-y-visible mt-[]'
+      className='overflow-hidden Overflow-y-visible sm_special:overflow-y-visible'
     >
       <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
-        <div className='flex flex-col lg:flex-row lg:items-center lg:justify-around xl:max-w-[100rem] xl:m-auto'>
+        
           {/* text */}
           <motion.div
             initial={{ opacity: 0, y: '-80%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-80%' }}
             transition={transition1}
-            className='flex lg:items-center mx-auto lg:ml-[6rem]'
+            className='lg:ml-[6rem]'
           >
             {/*
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}*/}
             <div>
-              <h1 className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>Portfolio</h1>
-              <p className='pt-[5rem] pb-[1rem] max-w-sm md:mx-w-lg  xl:max-w-[32rem] text-lg special:text-[1.4rem] text-justify px-[8%] md:px-[0%]'>
-              <b>Love story/family, individual, photo for pregnant, Weddings</b>, my photographs cover all kinds of topics.
-              </p>
-              <p className='pb-[10%] max-w-sm md:mx-w-lg  xl:max-w-[32rem] text-lg special:text-[1.4rem] text-justify px-[8%] md:px-[0%]'>
-              More than 10 years of experience have allowed me to develop in the different styles and photographic themes that exist.
-              </p>
-              <div className='hidden justify-center lg:block'>
-                <Link to={'/porfolio'} className='btn mb-[30px] px-auto lg:px-0 w-[13rem]'>
-                  Look more
-                </Link>
+              <div className='block md:flex md:justify-between md:flex-wrap '>
+                
+                <h1 className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>Portfolio</h1>
+
+
+                <div className='mx-[8rem] md:mx-0 mt-5 md:mt-0'>
+                  
+                  <div className='block lg:hidden py-6'>
+                    <SelectBox/>
+                  </div>
+                  
+                  <ul className='hidden md:flex md:justify-around py-6'>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 '>Professionals</a>
+                    </li>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Familiar</a>
+                    </li>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Weddings</a>
+                    </li>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Birthday</a>
+                    </li>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Fashion</a>
+                    </li>
+                    <li>
+                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Pregnancy</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
               
+              <div className='mt-[4rem] '>
+                <Images/>
+              </div>
+
+              <div className='flex justify-end mt-[5rem]'>
+                <Link to={'/porfolio'} className='mb-[30px] px-auto lg:px-0 w-[13rem] text-[2rem]'>
+                  {'See All ->'}
+                </Link>
+              </div>
             </div>
           </motion.div>
 
           {/* image grid */}
-          <div >
-            
-            <Images/>
-            
-            <div className='flex lg:hidden justify-center mt-[5rem]'>
-              <Link to={'/porfolio'} className='btn mb-[30px] px-auto lg:px-0 w-[13rem]'>
-                Look more
-              </Link>
-            </div>
-          </div>
-        </div>
       </div>
     </motion.section>
   );
