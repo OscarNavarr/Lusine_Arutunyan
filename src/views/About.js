@@ -36,7 +36,7 @@ const About = () => {
             lg:ml-[9.5rem] sxl:ml-[35rem] 
             lg:mr-[7rem]
             sxl:w-[45rem] 
-            order-2 lg:order-none 
+            lg:order-none 
             overflow-hidden
           '>
             

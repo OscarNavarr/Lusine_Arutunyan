@@ -112,14 +112,6 @@ const Portfolio = () => {
                     </li>
                     <li>
                       <button 
-                        onClick={() => setCategorie('Birthday')}
-                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
-                      >
-                        Birthday
-                      </button>
-                    </li>
-                    <li>
-                      <button 
                         onClick={() => setCategorie('Fashion')}
                         className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
                       >

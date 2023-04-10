@@ -2,7 +2,7 @@ const Images = (props) => {
     const images = props.images;
     let fiveImages = [];
 
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 6; index++) {
         if(images[index]){
             fiveImages.push(images[index]);
         }
