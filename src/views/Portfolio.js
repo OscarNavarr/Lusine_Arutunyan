@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 // import link
 import { Link } from 'react-router-dom';
 // import motion
@@ -10,9 +10,47 @@ import { CursorContext } from '../context/CursorContext';
 //import ImagesSlider
 import Images from '../components/porfolio/Images';
 import SelectBox from '../components/SelectBox';
+import { storage } from '../firebase';
+import { ref, listAll, getDownloadURL} from 'firebase/storage';
+import LoaderSpinner from '../components/LoaderSpinner';
 
 const Portfolio = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+
+    const [categorie, setCategorie] = useState('Professionals');
+    
+    //HOOKS FOR THE IMAGES URL
+    const [imageList, setImageList] = useState([]);
+    
+    //HOOK FOR LOADERSPINNER COMPONENT
+    const [loading, setLoading] = useState(false);
+  
+    //GET IMAGES FROM FIRESTORE
+  useEffect(() => {
+    const fetchImageList = async () => {
+      try {
+        const imageListRef = ref(storage, categorie +'/');
+        const response = await listAll(imageListRef);
+        setLoading(true);
+        
+        // GET URLS FOR ALL IMAGES
+        const [urls] = await Promise.all([
+          Promise.all(response.items.map((item) => getDownloadURL(item)))
+        ]);
+
+        // UPDATE HOOKS WITH RETRIEVED DATA
+        setImageList(urls);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        
+      }
+    };
+
+    fetchImageList();
+
+  }, [categorie]);
+  
   return (
     <motion.section
       initial={{ opacity: 0, y: '100%' }}
@@ -49,29 +87,59 @@ const Portfolio = () => {
                   
                   <ul className='hidden md:flex md:justify-around py-6'>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 '>Professionals</a>
+                      <button  
+                        onClick={() => setCategorie('Professionals')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 '
+                      >
+                        Professionals
+                      </button>
                     </li>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Familiar</a>
+                      <button 
+                        onClick={() => setCategorie('Familiar')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
+                      >
+                        Familiar
+                      </button>
                     </li>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Weddings</a>
+                      <button 
+                        onClick={() => setCategorie('Weddings')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
+                      >
+                        Weddings
+                      </button>
                     </li>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Birthday</a>
+                      <button 
+                        onClick={() => setCategorie('Birthday')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
+                      >
+                        Birthday
+                      </button>
                     </li>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Fashion</a>
+                      <button 
+                        onClick={() => setCategorie('Fashion')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
+                      >
+                        Fashion
+                      </button>
                     </li>
                     <li>
-                      <a href='#' className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'>Pregnancy</a>
+                      <button
+                        onClick={() => setCategorie('Pregnancy')}
+                        className='text-[1.2rem] hover:border-black hover:border-b-2 lg:ml-5'
+                      >
+                        Pregnancy
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
               
               <div className='mt-[4rem] '>
-                <Images/>
+                <Images images={imageList}/>
               </div>
 
               <div className='flex justify-end mt-[5rem]'>
@@ -82,7 +150,15 @@ const Portfolio = () => {
             </div>
           </motion.div>
 
-          {/* image grid */}
+          <div className =
+            {`
+            ${loading ? 'block' : 'hidden'} 
+            absolute 
+            bottom-[15rem]  lg:bottom-[20rem]
+            left-[0.6rem] lg:left-[38%]
+            `}>
+              <LoaderSpinner/>
+        </div>
       </div>
     </motion.section>
   );
