@@ -15,6 +15,7 @@ const Pricing = () => {
         exit={{ opacity: 0, y: '100%' }}
         transition={transition1}
         className='mt-[7rem]'
+        id='pricing'
         >
             <div className='container mx-auto h-full relative'>
                <h1 className='h1 text-center lg:text-center lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>My services</h1>

@@ -66,6 +66,7 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={transition1}
       className='section'
+      id='home'
     >
       <div className='container mx-auto h-full '>
         {/* text & img wrapper */}
@@ -133,7 +134,7 @@ const Home = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='overflow-hidden w-[20rem] h-[20rem] lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none'
+              className='overflow-hidden w-[20rem] h-[20rem] relative lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}
@@ -142,21 +143,35 @@ const Home = () => {
                 src={texts[index].images}
                 alt='presentation images'
               />
-            </motion.div>
-            
-            <div className='flex z-[6] absolute bottom-[32rem] lg:bottom-[-6rem] lg:right-[14rem]'>
-              <button
-               onClick={() => imgAction('previous-img')}
-               className='rounded-full lg:rounded-none mr-[14rem] lg:mr-0 outline-none  lg:h-[4rem] lg:w-[4rem] lg:px-4 bg-white lg:bg-black '>
-                <AiOutlineLeft className='text-black lg:text-white w-[2rem] h-[2rem]'/>
-              </button>
+              <div className='flex z-[6] lg:hidden absolute bottom-[45%] lg:bottom-[-7rem] lg:right-[14rem]'>
+                <button
+                onClick={() => imgAction('previous-img')}
+                className='rounded-full lg:rounded-none mr-[14.7rem] lg:mr-0 outline-none  lg:h-[4rem] lg:w-[4rem] lg:px-4 bg-white lg:bg-black '>
+                  <AiOutlineLeft className='text-black lg:text-white w-[2rem] h-[2rem]'/>
+                </button>
 
-              <button 
-                onClick={() => imgAction('next-img')}
-                className='rounded-full lg:rounded-none outline-none lg:h-[4rem] lg:w-[4rem] ml-5 lg:px-4  bg-white lg:bg-black'>
-                <AiOutlineRight className='text-black lg:text-white w-[2rem] h-[2rem]'/>
-              </button>
-            </div>
+                <button 
+                  onClick={() => imgAction('next-img')}
+                  className='rounded-full lg:rounded-none outline-none lg:h-[4rem] lg:w-[4rem] ml-5 lg:px-4  bg-white lg:bg-black'>
+                  <AiOutlineRight className='text-black lg:text-white w-[2rem] h-[2rem]'/>
+                </button>
+              </div>
+            </motion.div>
+
+            <div className=' z-[6] hidden lg:flex absolute bottom-[45%] lg:bottom-[-5rem] lg:right-[10rem] special:right-[14rem]'>
+                <button
+                onClick={() => imgAction('previous-img')}
+                className='rounded-full lg:rounded-none mr-[14.7rem] lg:mr-0 outline-none  lg:h-[4rem] lg:w-[4rem] lg:px-4 bg-white lg:bg-black '>
+                  <AiOutlineLeft className='text-black lg:text-white w-[2rem] h-[2rem]'/>
+                </button>
+
+                <button 
+                  onClick={() => imgAction('next-img')}
+                  className='rounded-full lg:rounded-none outline-none lg:h-[4rem] lg:w-[4rem] ml-5 lg:px-4  bg-white lg:bg-black'>
+                  <AiOutlineRight className='text-black lg:text-white w-[2rem] h-[2rem]'/>
+                </button>
+              </div>
+            
 
           </div>
         </div>

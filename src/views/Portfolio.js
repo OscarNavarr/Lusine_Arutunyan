@@ -9,10 +9,10 @@ import { transition1 } from '../transitions';
 import { CursorContext } from '../context/CursorContext';
 //import ImagesSlider
 import Images from '../components/porfolio/Images';
-import SelectBox from '../components/SelectBox';
 import { storage } from '../firebase';
 import { ref, listAll, getDownloadURL} from 'firebase/storage';
 import LoaderSpinner from '../components/LoaderSpinner';
+import SelectBoxSpecial from '../components/SelectBoxSpecial';
 
 const Portfolio = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -23,7 +23,11 @@ const Portfolio = () => {
     const [imageList, setImageList] = useState([]);
     
     //HOOK FOR LOADERSPINNER COMPONENT
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const handleCategorie = ( selectedCategorie) => {
+        setCategorie(selectedCategorie);
+    }
   
     //GET IMAGES FROM FIRESTORE
   useEffect(() => {
@@ -57,7 +61,8 @@ const Portfolio = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className='overflow-hidden Overflow-y-visible sm_special:overflow-y-visible'
+      className='overflow-hidden '
+      id='porfolio'
     >
       <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
         
@@ -67,7 +72,7 @@ const Portfolio = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-80%' }}
             transition={transition1}
-            className='lg:ml-[6rem]'
+            className='mx-[2rem] lg:mx-[12rem] flex justify-center'
           >
             {/*
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div
@@ -81,8 +86,8 @@ const Portfolio = () => {
 
                 <div className='mx-[8rem] md:mx-0 mt-5 md:mt-0'>
                   
-                  <div className='block lg:hidden py-6'>
-                    <SelectBox/>
+                  <div className='flex justify-center lg:hidden py-6'>
+                    <SelectBoxSpecial onCategorieChange={handleCategorie}/>
                   </div>
                   
                   <ul className='hidden md:flex md:justify-around py-6'>
@@ -130,27 +135,31 @@ const Portfolio = () => {
                 </div>
               </div>
               
-              <div className='mt-[4rem] '>
+              <div className='mt-[4rem]  '>
                 <Images images={imageList}/>
               </div>
 
-              <div className='flex justify-end mt-[5rem]'>
-                <Link to={'/porfolio'} className='mb-[30px] px-auto lg:px-0 w-[13rem] text-[2rem]'>
+              <div className='flex justify-center lg:justify-end mt-[5rem]'>
+                <Link to={'/porfolio'} className='mb-[30px] text-center px-auto lg:px-0 w-[13rem] text-[2rem]'>
                   {'See All ->'}
                 </Link>
               </div>
             </div>
           </motion.div>
 
-          <div className =
-            {`
-            ${loading ? 'block' : 'hidden'} 
-            absolute 
-            bottom-[15rem]  lg:bottom-[20rem]
-            left-[0.6rem] lg:left-[38%]
-            `}>
-              <LoaderSpinner/>
-        </div>
+            {
+              loading && (
+                <div className ='
+                  z-[200]
+                  absolute 
+                  bottom-[15rem]  lg:bottom-[20rem]
+                  left-[0.6rem] lg:left-[38%]
+                '>
+                  <LoaderSpinner/>
+                </div>
+              )
+            }
+          
       </div>
     </motion.section>
   );

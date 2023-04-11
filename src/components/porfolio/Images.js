@@ -9,14 +9,14 @@ const Images = (props) => {
     }
     return (
     <>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-11'>
             {/* image */}
             {fiveImages.map((img,i) => (
-                <div key={i} className='p-4 '>
+                <div className="flex justify-center" key={i}>
                     <img
                     key={i}
                     src={img}
-                    className='object-cover  hover:scale-110 transition-all duration-500'
+                    className='object-cover  w-[20rem]  hover:scale-110 transition-all duration-500'
                     alt='Porfolio'
                     />
                 </div>

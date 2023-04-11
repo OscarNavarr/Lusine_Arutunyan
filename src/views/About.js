@@ -18,7 +18,8 @@ const About = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
-      className=''
+      className='mt-[10rem] lg:mt-0'
+      id='about'
     >
       {/*
               ESTE CODIGO VA DENTRO DE LA ETIQUETA DE APERTURA DEL motion.div

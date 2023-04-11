@@ -12,6 +12,7 @@ const Contact = () => {
   return (
     <motion.section
       className='bg-white'
+      id='contact'
     >
       <div className=''>
         <div className=' flex flex-col lg:flex-row h-full items-center justify-start mt-[10rem] gap-x-8 text-center lg:text-left'>
