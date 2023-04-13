@@ -1,9 +1,9 @@
 
 import lusiane from '../img/home/Lusine_Arutunyan.jpg';
-import img1 from '../img/portfolio/img1.jpg';
-import img2 from '../img/portfolio/img2.jpg';
-import img3 from '../img/portfolio/img3.jpg';
-import img4 from '../img/portfolio/img4.jpg';
+import img1 from '../img/home/img1.jpeg';
+import img2 from '../img/home/img2.jpeg';
+import img3 from '../img/home/img3.jpeg';
+import img4 from '../img/home/img4.jpeg';
 
 const br = <br/>;
  const texts = [

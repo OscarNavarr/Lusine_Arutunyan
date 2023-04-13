@@ -18,9 +18,9 @@ const Pricing = () => {
         id='pricing'
         >
             <div className='container mx-auto h-full relative'>
-               <h1 className='h1 text-center lg:text-center lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>My services</h1>
+               <h1 className='h1 text-center lg:text-center  lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>My services</h1>
                <div className='flex justify-center'>
-                    <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-11 text-center lg:text-left lg:pt-16 pb-[8rem]'>
+                    <div className='grid md:grid-cols-2  lg:grid-cols-3 gap-11 text-center lg:text-left lg:pt-16'>
                         {/*CARD ONE */}
                         <PricingComponent
                             title='Love story/family'

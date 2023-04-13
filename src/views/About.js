@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
 // import images
 import WomanImg from '../img/about/lusine_arutunyan.jpg';
-// import link
-import { Link } from 'react-router-dom';
 // import motion
 import { motion } from 'framer-motion';
 // import transition
 import { transition1 } from '../transitions';
-// import cursor context
-import { CursorContext } from '../context/CursorContext';
+import SocialsMedias from '../components/SocialsMedias';
 
 const About = () => {
   //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -67,9 +63,9 @@ const About = () => {
             <p className='lg:text-[15.2px] sxl:text-[1.5rem] text-justify mb-[1.5rem] sxl:pb-[2rem] max-w-sm lg:max-w-[23rem] xl:max-w-sm sxl:max-w-[40rem]'>
               You'll have precious moments of your life that you can share with your family and friends.
             </p>
-            <a href={'#subabout'} className='btn  lg:py-[0rem] lg:px-[0rem] lg:h-[2.5rem] xl:h-[3.4rem] sxl:h-[4rem] lg:w-[10rem] sxl:w-[12rem]'>
-              Read more
-            </a>
+            <div className='mt-10 lg:mt-0'>
+              <SocialsMedias />
+            </div>
           </motion.div>
         </div>
       </div>

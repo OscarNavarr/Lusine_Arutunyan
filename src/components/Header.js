@@ -74,6 +74,3 @@ const Header = () => {
 };
 
 export default Header;
-{/* onMouseEnter={mouseEnterHandler}
-           onMouseLeave={mouseLeaveHandler} */}
-           {/** */}

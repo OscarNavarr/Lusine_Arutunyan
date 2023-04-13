@@ -62,7 +62,7 @@ const Portfolio = () => {
       exit={{ opacity: 0, y: '100%' }}
       transition={transition1}
       className='overflow-hidden '
-      id='porfolio'
+      id='portfolio'
     >
       <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
         
