@@ -4,7 +4,6 @@ import {
     ImTwitter,
     ImPinterest,
     ImInstagram,
-    ImYoutube,
   } from 'react-icons/im';
   
   const SocialsMedias = () => {
@@ -29,15 +28,11 @@ import {
             </a>
           </li>
           <li>
-            <a href='http://www.instagram.com' target='_blank'>
+            <a href='https://www.instagram.com/lusinearutunyan_ph/' target='_blank'>
               <ImInstagram className='sxl:text-[25px]'/>
             </a>
           </li>
-          <li>
-            <a href='http://www.youtube.com' target='_blank'>
-              <ImYoutube className='sxl:text-[25px]'/>
-            </a>
-          </li>
+          
         </ul>
       </div>
     );

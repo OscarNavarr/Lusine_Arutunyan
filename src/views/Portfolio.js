@@ -24,7 +24,7 @@ const Portfolio = () => {
     const [imageList, setImageList] = useState([]);
     
     //HOOK FOR LOADERSPINNER COMPONENT
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const handleCategorie = ( selectedCategorie) => {
         setCategorie(selectedCategorie);
@@ -63,7 +63,7 @@ const Portfolio = () => {
       className='overflow-hidden '
       id='portfolio'
     >
-      <div className='container mx-auto h-full pt-[8rem] md:pt-[12rem]'>
+      <div className='container mx-auto relative h-full pt-[8rem] md:pt-[12rem]'>
         
           {/* text */}
           <motion.div
@@ -168,10 +168,10 @@ const Portfolio = () => {
             {
               loading && (
                 <div className ='
-                  z-[200]
+                  z-28
                   absolute 
-                  bottom-[15rem]  lg:bottom-[20rem]
-                  left-[0.6rem] lg:left-[38%]
+                  top-[30rem] lg:top-[35rem]
+                  left-[2%] md:left-[15%] lg:left-[27rem]
                 '>
                   <LoaderSpinner/>
                 </div>

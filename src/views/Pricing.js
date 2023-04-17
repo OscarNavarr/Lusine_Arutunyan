@@ -67,7 +67,7 @@ const Pricing = () => {
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='10 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671746211/photos/family_dvvseg.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2Ffamily_dvvseg.jpg?alt=media&token=8e434c5f-1861-4d38-9528-4dceb3f86a88'
                             />
                         </motion.div>
 
@@ -85,7 +85,7 @@ const Pricing = () => {
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='3 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671748896/photos/individual_qz5skz.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2Fphoto_2023-04-17%2023.02.27.jpeg?alt=media&token=d5ad044e-45dc-41ae-b7f4-7a7904970423'
                             />
                         </motion.div>
 
@@ -102,7 +102,7 @@ const Pricing = () => {
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='3 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671749211/photos/pregnant_lsbeit.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2Fimg1.jpeg?alt=media&token=de453b4d-f186-4d5c-8173-2ff48e734a99'
                             />
                         </motion.div>
                         
@@ -119,7 +119,7 @@ const Pricing = () => {
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='3 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671749734/photos/Weddings_kk4ctx.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2FWeddings_kk4ctx.jpg?alt=media&token=29d03703-93ac-4299-a818-01502f7b817a'
                             />
                         </motion.div>
 
@@ -136,7 +136,7 @@ const Pricing = () => {
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='3 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671752363/photos/birdays_v80m9n.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2Fbirdays_v80m9n.jpg?alt=media&token=484725fe-1c15-4d30-800f-4ac1da39331c'
                             />
                         </motion.div>
 
@@ -148,12 +148,12 @@ const Pricing = () => {
                             transition={{duration: 1, delay: 0.3}}
                         >
                             <PricingComponent 
-                                title='Birthday'
+                                title='Fashion'
                                 value='40€'
                                 duration='1h'
                                 n_fotos='40-45'
                                 time='3 days'
-                                src='https://res.cloudinary.com/duchgijkt/image/upload/v1671752537/photos/fashion_njt0i2.jpg'
+                                src='https://firebasestorage.googleapis.com/v0/b/lusine-arutunyan.appspot.com/o/pricing%2Fphoto_2023-04-17%2023.01.30.jpeg?alt=media&token=59f60d43-03f1-4ef4-bf89-af2f4122aee6'
                             />
                         </motion.div>
                     </div>

@@ -12,23 +12,23 @@ import img4 from '../img/home/img4.jpeg';
         "images":  lusiane
         },
         {
-        "title":"I make Pregnancy Photography",
-        "subtitle": "Explore Lusiane's Stunning Portfolio",
+        "title":"I make Maternity Magic Memories",
+        "subtitle": "Pregnancy Photography",
         "images":  img1
         },
         {
-        "title":"I make Weddings Photography",
-        "subtitle": "Discover the Beauty of Everyday Life",
+        "title":"I capture Wedding Day Moments",
+        "subtitle": "Weddings Photography",
         "images":  img2
         },
         {
-        "title":"I make Familiar Photography",
-        "subtitle": "Discover the Beauty of Everyday Life",
+        "title":"Take some Happy Family Captures",
+        "subtitle": "Familiar Photography",
         "images":  img3
         },
         {
-        "title":"I make Fashion Photography",
-        "subtitle": "Discover the Beauty of Everyday Life",
+        "title":"Chic Image Creation",
+        "subtitle": "Fashion Photography",
         "images":  img4
         },
  ]
