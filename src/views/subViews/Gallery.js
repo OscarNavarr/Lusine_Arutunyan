@@ -57,7 +57,7 @@ const Gallery = ( props) =>{
                 '>X</button>
                 <button onClick={() => imgAction('previous-img')}
                        className='
-                        bg-white 
+                       bg-[rgba(255,255,255,0.7)] 
                         rounded-full 
                         h-[3rem] 
                         w-[3rem]  
@@ -75,7 +75,7 @@ const Gallery = ( props) =>{
                 
                 <button onClick={() => imgAction('next-img')}
                         className='
-                            bg-white 
+                            bg-[rgba(255,255,255,0.7)] 
                             rounded-full
                             h-[3rem] 
                             w-[3rem]  

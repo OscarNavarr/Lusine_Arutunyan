@@ -21,11 +21,11 @@ const SelectBoxSpecial = (props) => {
     }
 
   return (
-    <div>
-        <div className='flex relative border-b-[0.1rem] border-black'>
+    <div className='relative'>
+        <div className='flex relative justify-center border-b-[0.1rem] max-w-[10rem] border-black'>
             <button 
                 onClick={() => setVisible(!visible)}
-                className='mb-1 flex'>
+                className='mb-1 flex '>
                 {categorie}
                 <AiOutlineDown className='ml-5 pt-1 mt-1 w-[1rem] h-[1rem]'/>
             </button>
@@ -36,7 +36,7 @@ const SelectBoxSpecial = (props) => {
                     initial={{opacity:0,height:'0rem'}}
                     animate={{opacity:1,height:'19.5rem'}}
                     transition={{duration:1}}
-                    className='absolute top-[10rem] left-[4rem] bg-[RGBA(255,255,255,0.9)] w-[12rem] rounded-lg'
+                    className='absolute top-[2.5rem] lg:top-9 left-[-2.5rem] border  bg-[RGBA(255,255,255,0.9)] w-[12rem] rounded-lg'
                 >
                     <ul className=''> 
                         <motion.li 

@@ -4,7 +4,7 @@ import { About, Contact, Home, Opinions, Portfolio, Pricing, StepToMyServices } 
 
 const MainPage = () => {
   return (
-    <>
+    <div className='overscroll-x-none overflow-x-hidden'>
         <Header/>
         <Home/>
         <Portfolio/>
@@ -13,7 +13,7 @@ const MainPage = () => {
         <StepToMyServices/>
         <Opinions/>
         <Contact/>
-    </>
+    </div>
   )
 }
 

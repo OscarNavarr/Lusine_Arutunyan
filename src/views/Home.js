@@ -7,7 +7,7 @@
  * 
  */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import link
 import { Link } from 'react-router-dom';
 // import motion
@@ -71,7 +71,7 @@ const Home = () => {
     >
       <div className='container mx-auto h-full '>
         {/* text & img wrapper */}
-        <div className='flex flex-col justify-center lg:relative'>
+        <div className='flex flex-col justify-center'>
           {/* text */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -84,8 +84,8 @@ const Home = () => {
             w-full 
             lg:mt-[15rem] xl:mt-[20rem] sxl:mt-[23rem] speciallaptop2:mt-[15rem]
             xl:ml-[15rem] speciallaptop:ml-[6rem] speciallaptop2:ml-[15rem] special:ml-[15rem] sxl:ml-[34.9rem] 
-            pb-14 lg:pb-0 lg:w-[40rem] xl:w-[35rem]
-            speciallaptop:w-[30rem] special:w-[30rem] sxl:w-[47rem] 
+            pb-14 lg:pb-0 md:w-[50rem] lg:w-[40rem]  xl:w-[50rem]
+            speciallaptop:w-[40rem] special:w-[40rem] sxl:w-[60rem] 
             z-10 
             flex flex-col 
             justify-center
@@ -99,8 +99,8 @@ const Home = () => {
               initial={{y:'100%',opacity:0}}
               animate={{y:'0%',opacity:1}}
               transition={{duration:1,delay:0.3}}
-              className='h1 lg:text-[5rem] sxl:text-[8rem]'>
-              photographer <br /> & film maker
+              className='h1 text-center lg:text-start text-[3rem] lg:text-[5rem] sxl:text-[8rem]'>
+              {texts[index].title}
             </motion.h1>
             <motion.p 
               initial={{y:'100%',opacity:0}}
@@ -110,7 +110,7 @@ const Home = () => {
               Marseille-Paris, France
             </motion.p>
             <motion.a 
-              href='#porfolio'
+              href='#portfolio'
               initial={{y:'100%',opacity:0}}
               animate={{y:'0%',opacity:1}}
               transition={{duration:1,delay:0.6}}

@@ -35,31 +35,31 @@ const Header = () => {
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}*/} 
           <a href="#home"
-            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
+            className='text-[#696c6d] border-gray-700 hover:border-b-[0.18rem] text-[1.2rem] sxl:text-[25px] hover:text-primary transition'
           >
             Home
           </a>
           <a
+            href='#portfolio'
+            className='text-[#696c6d] border-gray-700 hover:border-b-[0.18rem] text-[1.2rem]  sxl:text-[25px] hover:text-primary transition'
+          >
+            Portfolio
+          </a>
+          <a
             href='#about'
-            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
+            className='text-[#696c6d] border-gray-700 hover:border-b-[0.18rem] text-[1.2rem]  sxl:text-[25px] hover:text-primary transition'
           >
             About
           </a>
           <a
-            href='#porfolio'
-            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
-          >
-            Porftolio
-          </a>
-          <a
             href='#pricing'
-            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
+            className='text-[#696c6d] border-gray-700 hover:border-b-[0.18rem] text-[1.2rem]  sxl:text-[25px] hover:text-primary transition'
           >
             Pricing
           </a>
           <a
             href='#contact'
-            className='text-[#696c6d] sxl:text-[25px] hover:text-primary transition'
+            className='text-[#696c6d] border-gray-700 hover:border-b-[0.18rem] text-[1.2rem]  sxl:text-[25px] hover:text-primary transition'
           >
             Contact
           </a>

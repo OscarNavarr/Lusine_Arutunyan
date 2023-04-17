@@ -59,7 +59,7 @@ const Pricing = () => {
                         />
                         {/*CARD FIVE */}
                         <PricingComponent 
-                            title='Birthday'
+                            title='Baby Birthday'
                             value='40€'
                             duration='1h'
                             n_fotos='40-45'

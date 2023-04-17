@@ -1,12 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 // import link
 import { Link } from 'react-router-dom';
 // import motion
-import { motion } from 'framer-motion';
-// import transition
-import { transition1 } from '../transitions';
-// import context
-import { CursorContext } from '../context/CursorContext';
+import { motion, useInView} from 'framer-motion';
+
 //import ImagesSlider
 import Images from '../components/porfolio/Images';
 import { storage } from '../firebase';
@@ -15,7 +12,8 @@ import LoaderSpinner from '../components/LoaderSpinner';
 import SelectBoxSpecial from '../components/SelectBoxSpecial';
 
 const Portfolio = () => {
-  //const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+    const refer = useRef(null)
+    const isInView = useInView(refer, {margin: "-9%"})
 
     const [categorie, setCategorie] = useState('Professionals');
     
@@ -28,9 +26,11 @@ const Portfolio = () => {
     const handleCategorie = ( selectedCategorie) => {
         setCategorie(selectedCategorie);
     }
-  
+    
+
     //GET IMAGES FROM FIRESTORE
   useEffect(() => {
+   
     const fetchImageList = async () => {
       try {
         const imageListRef = ref(storage, categorie +'/');
@@ -57,10 +57,6 @@ const Portfolio = () => {
   
   return (
     <motion.section
-      initial={{ opacity: 0, y: '100%' }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: '100%' }}
-      transition={transition1}
       className='overflow-hidden '
       id='portfolio'
     >
@@ -68,10 +64,6 @@ const Portfolio = () => {
         
           {/* text */}
           <motion.div
-            initial={{ opacity: 0, y: '-80%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '-80%' }}
-            transition={transition1}
             className='mx-[2rem] lg:mx-[12rem] flex justify-center'
           >
             {/*
@@ -81,16 +73,33 @@ const Portfolio = () => {
             <div>
               <div className='block md:flex md:justify-between md:flex-wrap '>
                 
-                <h1 className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'>Portfolio</h1>
+                <motion.h1 
+                  initial={{opacity:0, x: "-90px"}}
+                  animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "-90px"}}
+                  transition={{duration: 1}}
+                  ref={refer} 
+                  className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'
+                >
+                  Portfolio
+                </motion.h1>
 
 
                 <div className='mx-[8rem] md:mx-0 mt-5 md:mt-0'>
                   
-                  <div className='flex justify-center lg:hidden py-6'>
+                  <motion.div 
+                    initial={{opacity:0, x: "90px"}}
+                    animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "90px"}}
+                    transition={{duration: 1}} 
+                    className='flex justify-center xl:hidden py-6'>
                     <SelectBoxSpecial onCategorieChange={handleCategorie}/>
-                  </div>
+                  </motion.div>
                   
-                  <ul className='hidden md:flex md:justify-around py-6'>
+                  <motion.ul 
+                    initial={{opacity:0, x: "90px"}}
+                    animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "90px"}}
+                    transition={{duration: 1}} 
+                    className='hidden h-[4.6rem] xl:flex md:justify-around py-6'
+                  >
                     <li>
                       <button  
                         onClick={() => setCategorie('Professionals')}
@@ -131,7 +140,7 @@ const Portfolio = () => {
                         Pregnancy
                       </button>
                     </li>
-                  </ul>
+                  </motion.ul>
                 </div>
               </div>
               
