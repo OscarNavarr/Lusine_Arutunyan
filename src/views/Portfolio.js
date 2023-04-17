@@ -13,7 +13,10 @@ import SelectBoxSpecial from '../components/SelectBoxSpecial';
 
 const Portfolio = () => {
     const refer = useRef(null)
-    const isInView = useInView(refer, {margin: "-9%"})
+    const linkRef = useRef(null)
+    
+    const isInView = useInView(refer, { once: true }, {margin: "-9%"})
+    const isLinkInView = useInView(linkRef, { once: true }, {margin: "-9%"})
 
     const [categorie, setCategorie] = useState('Professionals');
     
@@ -74,8 +77,8 @@ const Portfolio = () => {
               <div className='block md:flex md:justify-between md:flex-wrap '>
                 
                 <motion.h1 
-                  initial={{opacity:0, x: "-90px"}}
-                  animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "-90px"}}
+                  initial={{opacity:0}}
+                  animate={{opacity: isInView ? 1 : 0}}
                   transition={{duration: 1}}
                   ref={refer} 
                   className='h1 text-center lg:text-start lg:text-[40px] special:text-[3.5rem] sxl:text-[60px]'
@@ -87,16 +90,16 @@ const Portfolio = () => {
                 <div className='mx-[8rem] md:mx-0 mt-5 md:mt-0'>
                   
                   <motion.div 
-                    initial={{opacity:0, x: "90px"}}
-                    animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "90px"}}
+                    initial={{opacity:0}}
+                    animate={{opacity: isInView ? 1 : 0}}
                     transition={{duration: 1}} 
                     className='flex justify-center xl:hidden py-6'>
                     <SelectBoxSpecial onCategorieChange={handleCategorie}/>
                   </motion.div>
                   
                   <motion.ul 
-                    initial={{opacity:0, x: "90px"}}
-                    animate={{opacity: isInView ? 1 : 0, x: isInView ? "0px" : "90px"}}
+                    initial={{opacity:0}}
+                    animate={{opacity: isInView ? 1 : 0}}
                     transition={{duration: 1}} 
                     className='hidden h-[4.6rem] xl:flex md:justify-around py-6'
                   >
@@ -148,11 +151,17 @@ const Portfolio = () => {
                 <Images images={imageList}/>
               </div>
 
-              <div className='flex justify-center lg:justify-end mt-[5rem]'>
+              <motion.div 
+                ref={linkRef}
+                initial={{opacity: 0}}
+                animate={{opacity: isLinkInView ? 1 : 0}}
+                transition={{duration: 1}}
+                className='flex justify-center lg:justify-end mt-[5rem]'
+              >
                 <Link to={'/porfolio'} className='mb-[30px] text-center px-auto lg:px-0 w-[13rem] text-[2rem]'>
                   {'See All ->'}
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 

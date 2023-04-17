@@ -1,20 +1,39 @@
-import React from 'react';
-import {motion} from 'framer-motion';
-import { transition1 } from '../transitions';
+import React, {useRef} from 'react';
+import {motion, useInView} from 'framer-motion';
 import { BsCircle } from 'react-icons/bs';
 
 const StepToMyServices = () => {
-  return (
-    <motion.div
-        initial={{ opacity: 0, y: '100%'}}
-        animate={{ opacity: 1, y: 0}}
-        exit={{ opacity: 0, y: '100%' }}
-        transition={transition1}
+    
+    //TITLE ANIMATION
+    const titleRef = useRef(null);
+    const isTitleInView = useInView(titleRef, { once: true }, {margin: "-10%"});
+  
+    //STEP ONE ANIMATION 
+    const stepOneRef = useRef(null);
+    const isStepOneInView = useInView(stepOneRef, { once: true }, {margin: "-15%"});
+    
+    //STEP TWO ANIMATION 
+    const stepTwoRef = useRef(null);
+    const isStepTwoInView = useInView(stepTwoRef, { once: true }, {margin: "-15%"});
+    
+    //STEP THREE ANIMATION 
+    const stepThreeRef = useRef(null);
+    const isStepThreeInView = useInView(stepThreeRef, { once: true }, {margin: "-15%"});
+    return (
+    <div
         className='mt-[10rem] lg:mt-[15rem]'
     >
         <div className='container mx-auto'>
             
-            <h2 className='h1 text-center text-[3.5rem]'>Steps to request my services</h2>
+            <motion.h2 
+                ref={titleRef}
+                initial={{opacity: 0}}
+                animate={{opacity: isTitleInView ? 1 : 0}}
+                transition={{duration:1}}
+                className='h1 text-center text-[3.5rem]'
+            >
+                Steps to request my services
+            </motion.h2>
             
             {/** 
              * 
@@ -22,7 +41,13 @@ const StepToMyServices = () => {
              *  
              * */}
 
-            <div className='lg:flex lg:justify-center lg:mt-20'>
+            <motion.div 
+                ref={stepOneRef}
+                initial={{opacity: 0}}
+                animate={{opacity: isStepOneInView ? 1 : 0}}
+                transition={{duration:1}} 
+                className='lg:flex lg:justify-center lg:mt-20'
+            >
                
                 <div className='hidden lg:block flex-1'>
                     <h3 className='h1  pt-[4rem] text-end text-gray-400'>1</h3>
@@ -42,7 +67,9 @@ const StepToMyServices = () => {
                             <div className='w-[0.2rem] h-[15rem] ml-[0.75rem] lg:ml-[1.2rem] bg-gray-300'/>
                         </div>
 
-                        <div className='ml-5 lg:ml-0'>
+                        <div 
+                            className='ml-5 lg:ml-0'
+                        >
                             <h5 className='text-[1.9rem] lg:pt-[3rem] font-bold'>You are interested in my work.</h5>
                             <p className='lg:w-[27rem] speciallaptop:w-[21rem] lg:mt-5 lg:text-[1.2rem] speciallaptop:text-[1rem] text-justify'>After having reviewed my website and having seen the photographs I have taken, are you convinced that I am the ideal person to capture the happiest moments of your life or, simply, I am the ideal person to collaborate on your project.</p>
                         </div>
@@ -51,7 +78,7 @@ const StepToMyServices = () => {
 
                 </div>
                 
-            </div>
+            </motion.div>
 
             {/** 
              * 
@@ -59,7 +86,13 @@ const StepToMyServices = () => {
              *  
              * */}
             
-            <div className='lg:flex lg:justify-center '>
+            <motion.div 
+                ref={stepTwoRef}
+                initial={{opacity: 0}}
+                animate={{opacity: isStepTwoInView ? 1 : 0}}
+                transition={{duration:1}} 
+                className='lg:flex lg:justify-center '
+            >
                 
                 <div className='ml-2 lg:ml-[5rem] flex-1 flex justify-end '>
                     
@@ -82,7 +115,7 @@ const StepToMyServices = () => {
                 <div className='flex-1 ml-[5rem] hidden lg:block'>
                     <h3 className='h1 text-gray-400'>2</h3>
                 </div>
-            </div>
+            </motion.div>
             
             {/** 
              * 
@@ -90,7 +123,13 @@ const StepToMyServices = () => {
              *  
              * */}
 
-            <div className='lg:flex lg:justify-center'>
+            <motion.div 
+                ref={stepThreeRef}
+                initial={{opacity: 0}}
+                animate={{opacity: isStepThreeInView ? 1 : 0}}
+                transition={{duration:1}} 
+                className='lg:flex lg:justify-center'
+            >
                
                <div className='hidden lg:block flex-1'>
                    <h3 className='h1 pt-0 mt-0 text-end text-gray-400'>3</h3>
@@ -116,9 +155,9 @@ const StepToMyServices = () => {
 
                     </div>
                </div>
-           </div>
+           </motion.div>
         </div>
-    </motion.div>
+    </div>
   )
 }
 

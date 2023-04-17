@@ -1,7 +1,14 @@
+import {motion, useInView} from 'framer-motion';
+import { useRef } from "react";
 
 const Images = (props) => {
     
+    const refer = useRef(null)
+    const isInView = useInView(refer, { once: true }, {margin: "-10%"})
+
+    //console.log(refer.current.__reactFiber$zjo13bym69.child.key)
     
+
     const images = props.images;
     let fiveImages = [];
 
@@ -13,10 +20,17 @@ const Images = (props) => {
 
     return (
     <>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-11'>
+        <motion.div 
+            initial={{opacity: 0}}
+            animate={{opacity: isInView ? 1 : 0}}
+            transition={{duration:1}}
+            ref={refer} 
+            className='grid md:grid-cols-2 lg:grid-cols-3 gap-11'
+        >
             {/* image */}
             {fiveImages.map((img,i) => (
-                <div 
+                
+                <motion.div
                     className="flex justify-center" key={i}
                 >
                     <img
@@ -26,9 +40,9 @@ const Images = (props) => {
                         alt='Porfolio'
                         style={{transition: "1s"}}
                     />
-                </div>
+                </motion.div>
             ))}
-          </div>
+          </motion.div>
     </>
   )
 }
