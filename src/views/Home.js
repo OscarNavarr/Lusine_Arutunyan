@@ -136,7 +136,7 @@ const Home = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={transition1}
-              className='overflow-hidden w-[20rem] h-[20rem] relative lg:w-[30rem] lg:h-[30rem] special:w-[40rem] special:h-[40rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none bg-cover bg-center'
+              className='overflow-hidden w-[20rem] h-[20rem] relative lg:w-[30rem] lg:h-[30rem] special:w-[35rem] special:h-[35rem] sxl:w-[55rem] sxl:h-[55rem] rounded-full lg:rounded-none bg-cover bg-center'
             >
               <motion.img
                 whileHover={{ scale: 1.1 }}

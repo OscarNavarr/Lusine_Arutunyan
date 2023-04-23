@@ -29,9 +29,9 @@ const App = () => {
            * Auth Routes
            */}
             <Routes >
-              <Route path='/' element={<MainPage/>}/>
+              <Route path='/' element={<MainPage/>} />
 
-              <Route path='/login' element={<Login/>} />
+              <Route path='/login' element={<Login/>}/>
               <Route path='/porfolio' element={<SubPortfolio/>} />
               
               <Route path='/dashboard' element={
